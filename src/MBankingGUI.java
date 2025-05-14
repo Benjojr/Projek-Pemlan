@@ -97,7 +97,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         nomorRekening1 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton()
         panelEWallet = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
