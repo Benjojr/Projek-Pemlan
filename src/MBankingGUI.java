@@ -84,6 +84,14 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         kolomBuatKonfirmasiSandi = new javax.swing.JTextField();
         btnKonfirmasiBuatAkun = new javax.swing.JButton();
+        panelEWallet = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -443,6 +451,11 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
 
         btnKonfirmasi.setText("KONFIRMASI");
+        btnKonfirmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKonfirmasiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -556,6 +569,11 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
 
         btnKonfirmasiBuatAkun.setText("KONFIRMASI");
+        btnKonfirmasiBuatAkun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKonfirmasiBuatAkunActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelDaftarMBankingLayout = new javax.swing.GroupLayout(panelDaftarMBanking);
         panelDaftarMBanking.setLayout(panelDaftarMBankingLayout);
@@ -610,6 +628,88 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         mainPanel.add(panelDaftarMBanking, "card5");
 
+        panelEWallet.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel22.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        jLabel22.setText("Top Up E-Wallet");
+
+        jLabel23.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        jLabel23.setText("Pilih E-Wallet Anda");
+
+        jButton7.setText("DANA");
+
+        jButton8.setText("OVO");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("GOPAY");
+
+        jButton10.setText("SHOPEEPAY");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton10, jButton7, jButton8, jButton9});
+
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addGap(30, 30, 30)
+                .addComponent(jButton8)
+                .addGap(28, 28, 28)
+                .addComponent(jButton9)
+                .addGap(31, 31, 31)
+                .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(44, 44, 44))
+        );
+
+        javax.swing.GroupLayout panelEWalletLayout = new javax.swing.GroupLayout(panelEWallet);
+        panelEWallet.setLayout(panelEWalletLayout);
+        panelEWalletLayout.setHorizontalGroup(
+            panelEWalletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEWalletLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEWalletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelEWalletLayout.createSequentialGroup()
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelEWalletLayout.setVerticalGroup(
+            panelEWalletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEWalletLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(225, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(panelEWallet, "card6");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -628,7 +728,8 @@ public class MBankingGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "card4");
     }//GEN-LAST:event_btnDaftarActionPerformed
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
@@ -681,6 +782,20 @@ public class MBankingGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_kolomBuatKonfirmasiSandiActionPerformed
 
+    private void btnKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonfirmasiActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "card5");
+    }//GEN-LAST:event_btnKonfirmasiActionPerformed
+
+    private void btnKonfirmasiBuatAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonfirmasiBuatAkunActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "card2");
+    }//GEN-LAST:event_btnKonfirmasiBuatAkunActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -728,11 +843,15 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnMasuk;
     private javax.swing.JButton btnSubmitLogin;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -747,6 +866,8 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -755,6 +876,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -770,6 +892,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelBeranda;
     private javax.swing.JPanel panelDaftar1;
     private javax.swing.JPanel panelDaftarMBanking;
+    private javax.swing.JPanel panelEWallet;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
