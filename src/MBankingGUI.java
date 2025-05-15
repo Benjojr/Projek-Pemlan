@@ -230,6 +230,11 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/account.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/send.png"))); // NOI18N
 
@@ -532,6 +537,11 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
 
         btnKonfirmasi.setText("KONFIRMASI");
+        btnKonfirmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKonfirmasiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -645,6 +655,11 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
 
         btnKonfirmasiBuatAkun.setText("KONFIRMASI");
+        btnKonfirmasiBuatAkun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKonfirmasiBuatAkunActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelDaftarMBankingLayout = new javax.swing.GroupLayout(panelDaftarMBanking);
         panelDaftarMBanking.setLayout(panelDaftarMBankingLayout);
@@ -1487,7 +1502,8 @@ public class MBankingGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
-        // TODO add your handling code here:
+         CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardDaftar1");
     }//GEN-LAST:event_btnDaftarActionPerformed
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
@@ -1520,12 +1536,12 @@ public class MBankingGUI extends javax.swing.JFrame {
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
         CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "card3");
+        cl.show(mainPanel, "cardLogin");
     }//GEN-LAST:event_btnMasukActionPerformed
 
     private void btnSubmitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitLoginActionPerformed
         CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "card2");
+        cl.show(mainPanel, "cardBeranda");
     }//GEN-LAST:event_btnSubmitLoginActionPerformed
 
     private void kolomBuatNamaPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolomBuatNamaPenggunaActionPerformed
@@ -1545,7 +1561,8 @@ public class MBankingGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardBeranda");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1571,6 +1588,21 @@ public class MBankingGUI extends javax.swing.JFrame {
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void btnKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonfirmasiActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardDaftarMBanking");
+    }//GEN-LAST:event_btnKonfirmasiActionPerformed
+
+    private void btnKonfirmasiBuatAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonfirmasiBuatAkunActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardLogin");
+    }//GEN-LAST:event_btnKonfirmasiBuatAkunActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardInfoRekening");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
