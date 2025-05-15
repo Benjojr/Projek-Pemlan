@@ -386,7 +386,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(192, 192, 192))
         );
 
-        mainPanel.add(panelBeranda, "card2");
+        mainPanel.add(panelBeranda, "cardBeranda");
 
         panelLogin.setBackground(new java.awt.Color(255, 255, 255));
         panelLogin.setMaximumSize(new java.awt.Dimension(1440, 3200));
@@ -467,7 +467,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap(240, Short.MAX_VALUE))
         );
 
-        mainPanel.add(panelLogin, "card3");
+        mainPanel.add(panelLogin, "cardLogin");
 
         panelDaftar1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -608,7 +608,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(panelDaftar1, "card4");
+        mainPanel.add(panelDaftar1, "cardDaftar1");
 
         panelDaftarMBanking.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -697,7 +697,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(237, 237, 237))
         );
 
-        mainPanel.add(panelDaftarMBanking, "card5");
+        mainPanel.add(panelDaftarMBanking, "cardDaftarMBanking");
 
         panelInfoRekening.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -802,7 +802,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainPanel.add(panelInfoRekening, "card6");
+        mainPanel.add(panelInfoRekening, "cardInfoRekening");
 
         panelEWallet.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -895,7 +895,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap(142, Short.MAX_VALUE))
         );
 
-        mainPanel.add(panelEWallet, "card7");
+        mainPanel.add(panelEWallet, "cardEWallet");
 
         panelTagihan.setBackground(new java.awt.Color(255, 255, 255));
         panelTagihan.setPreferredSize(new java.awt.Dimension(360, 640));
@@ -1090,7 +1090,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(39, 39, 39))
         );
 
-        mainPanel.add(panelTagihan, "card5");
+        mainPanel.add(panelTagihan, "cardTagihan");
 
         PanelBPJS.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1156,7 +1156,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(0, 334, Short.MAX_VALUE))
         );
 
-        mainPanel.add(PanelBPJS, "card6");
+        mainPanel.add(PanelBPJS, "cardBPJS");
 
         jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton28.addActionListener(new java.awt.event.ActionListener() {
@@ -1189,7 +1189,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(0, 622, Short.MAX_VALUE))
         );
 
-        mainPanel.add(PanelVoucherGame, "card7");
+        mainPanel.add(PanelVoucherGame, "cardVoucher");
 
         javax.swing.GroupLayout PanelDonasiLayout = new javax.swing.GroupLayout(PanelDonasi);
         PanelDonasi.setLayout(PanelDonasiLayout);
@@ -1202,7 +1202,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             .addGap(0, 673, Short.MAX_VALUE)
         );
 
-        mainPanel.add(PanelDonasi, "card8");
+        mainPanel.add(PanelDonasi, "cardDonasi");
 
         javax.swing.GroupLayout PanelJaringanLayout = new javax.swing.GroupLayout(PanelJaringan);
         PanelJaringan.setLayout(PanelJaringanLayout);
@@ -1215,7 +1215,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             .addGap(0, 673, Short.MAX_VALUE)
         );
 
-        mainPanel.add(PanelJaringan, "card9");
+        mainPanel.add(PanelJaringan, "cardJaringan");
 
         javax.swing.GroupLayout PanelTVKabelLayout = new javax.swing.GroupLayout(PanelTVKabel);
         PanelTVKabel.setLayout(PanelTVKabelLayout);
@@ -1228,7 +1228,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             .addGap(0, 673, Short.MAX_VALUE)
         );
 
-        mainPanel.add(PanelTVKabel, "card10");
+        mainPanel.add(PanelTVKabel, "cardTV");
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton19.addActionListener(new java.awt.event.ActionListener() {
@@ -1333,7 +1333,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(0, 132, Short.MAX_VALUE))
         );
 
-        mainPanel.add(PanelPaketData, "card11");
+        mainPanel.add(PanelPaketData, "cardPaketData");
 
         javax.swing.GroupLayout PanelPendidikanLayout = new javax.swing.GroupLayout(PanelPendidikan);
         PanelPendidikan.setLayout(PanelPendidikanLayout);
@@ -1346,7 +1346,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             .addGap(0, 673, Short.MAX_VALUE)
         );
 
-        mainPanel.add(PanelPendidikan, "card12");
+        mainPanel.add(PanelPendidikan, "cardPendidikan");
 
         javax.swing.GroupLayout PanelPDAMLayout = new javax.swing.GroupLayout(PanelPDAM);
         PanelPDAM.setLayout(PanelPDAMLayout);
@@ -1359,7 +1359,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             .addGap(0, 673, Short.MAX_VALUE)
         );
 
-        mainPanel.add(PanelPDAM, "card13");
+        mainPanel.add(PanelPDAM, "cardPDAM");
 
         javax.swing.GroupLayout PanelPLNLayout = new javax.swing.GroupLayout(PanelPLN);
         PanelPLN.setLayout(PanelPLNLayout);
@@ -1372,7 +1372,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             .addGap(0, 673, Short.MAX_VALUE)
         );
 
-        mainPanel.add(PanelPLN, "card14");
+        mainPanel.add(PanelPLN, "cardPLN");
 
         panelRiwayatTagihan.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1467,7 +1467,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addComponent(ahh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        mainPanel.add(panelRiwayatTagihan, "card5");
+        mainPanel.add(panelRiwayatTagihan, "cardRiwayat");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
