@@ -161,6 +161,13 @@ public class MBankingGUI extends javax.swing.JFrame {
         PanelPendidikan = new javax.swing.JPanel();
         PanelPDAM = new javax.swing.JPanel();
         PanelPLN = new javax.swing.JPanel();
+        panelRiwayatTagihan = new javax.swing.JPanel();
+        ah18 = new javax.swing.JLabel();
+        ah3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelRiwayat = new javax.swing.JTable();
+        btnKeluarRiwayat = new javax.swing.JButton();
+        ahh2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1367,6 +1374,101 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         mainPanel.add(PanelPLN, "card14");
 
+        panelRiwayatTagihan.setBackground(new java.awt.Color(255, 255, 255));
+
+        ah18.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        ah18.setText("RIWAYAT TAGIHAN");
+        ah18.setIconTextGap(5);
+
+        ah3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+
+        tabelRiwayat.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Tanggal", "Jenis", "Nominal", "Tujuan", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tabelRiwayat);
+
+        javax.swing.GroupLayout ah3Layout = new javax.swing.GroupLayout(ah3);
+        ah3.setLayout(ah3Layout);
+        ah3Layout.setHorizontalGroup(
+            ah3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ah3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        ah3Layout.setVerticalGroup(
+            ah3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ah3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnKeluarRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
+
+        javax.swing.GroupLayout ahh2Layout = new javax.swing.GroupLayout(ahh2);
+        ahh2.setLayout(ahh2Layout);
+        ahh2Layout.setHorizontalGroup(
+            ahh2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+        ahh2Layout.setVerticalGroup(
+            ahh2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelRiwayatTagihanLayout = new javax.swing.GroupLayout(panelRiwayatTagihan);
+        panelRiwayatTagihan.setLayout(panelRiwayatTagihanLayout);
+        panelRiwayatTagihanLayout.setHorizontalGroup(
+            panelRiwayatTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+                .addGroup(panelRiwayatTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ah3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+                        .addGroup(panelRiwayatTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(ah18))
+                            .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnKeluarRiwayat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 63, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(ahh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelRiwayatTagihanLayout.setVerticalGroup(
+            panelRiwayatTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnKeluarRiwayat, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ah18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ah3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(ahh2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        mainPanel.add(panelRiwayatTagihan, "card5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1517,10 +1619,14 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPanel PanelPendidikan;
     private javax.swing.JPanel PanelTVKabel;
     private javax.swing.JPanel PanelVoucherGame;
+    private javax.swing.JLabel ah18;
+    private javax.swing.JPanel ah3;
+    private javax.swing.JPanel ahh2;
     private javax.swing.JPanel bgrLogin;
     private javax.swing.JPanel bgrRekening;
     private javax.swing.JButton btnDaftar;
     private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnKeluarRiwayat;
     private javax.swing.JToggleButton btnKonfirmasi;
     private javax.swing.JButton btnKonfirmasiBuatAkun;
     private javax.swing.JButton btnMasuk;
@@ -1608,6 +1714,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
@@ -1636,7 +1743,9 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelEWallet;
     private javax.swing.JPanel panelInfoRekening;
     private javax.swing.JPanel panelLogin;
+    private javax.swing.JPanel panelRiwayatTagihan;
     private javax.swing.JPanel panelTagihan;
+    private javax.swing.JTable tabelRiwayat;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
