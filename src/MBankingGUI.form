@@ -273,6 +273,9 @@
                   <Image iconType="3" name="/account.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
@@ -764,6 +767,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="KONFIRMASI"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKonfirmasiActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -899,6 +905,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="KONFIRMASI"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKonfirmasiBuatAkunActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
