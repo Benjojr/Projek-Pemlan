@@ -186,6 +186,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelRiwayat = new javax.swing.JTable();
         btnKeluarRiwayat = new javax.swing.JButton();
+
         panelTransfer = new javax.swing.JPanel();
         faruqiPanelAlasBankTujuan = new javax.swing.JPanel();
         jLabel52 = new javax.swing.JLabel();
@@ -203,6 +204,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         btnPermata = new javax.swing.JButton();
         btnBankTujuanKeluar = new javax.swing.JButton();
         panelTransfer2 = new javax.swing.JPanel();
+
         btnTransfer2Keluar = new javax.swing.JButton();
         btnSelanjutnya2 = new javax.swing.JButton();
         jLabel54 = new javax.swing.JLabel();
@@ -289,8 +291,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
-        btnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file.png"))); // NOI18N
-        btnRiwayat.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRiwayatActionPerformed(evt);
             }
@@ -1695,6 +1696,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
         panelRiwayatTagihan.add(btnKeluarRiwayat);
 
+
         mainPanel.add(panelRiwayatTagihan, "cardRiwayat");
 
         faruqiPanelAlasBankTujuan.setBackground(new java.awt.Color(255, 255, 255));
@@ -1732,6 +1734,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnBRI1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
         );
 
         faruqiPanelMandiri.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
@@ -2092,6 +2095,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(205, 205, 205))
         );
 
+
         javax.swing.GroupLayout panelTransfer3Layout = new javax.swing.GroupLayout(panelTransfer3);
         panelTransfer3.setLayout(panelTransfer3Layout);
         panelTransfer3Layout.setHorizontalGroup(
@@ -2110,6 +2114,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -2129,6 +2134,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) mainPanel.getLayout();
         cl.show(mainPanel, "cardBeranda");
     }
+
 
     public class DatabaseConnection {
         public static Connection getConnection() throws SQLException {
@@ -2152,6 +2158,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             return connection;
         }
     }
+
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
@@ -2185,6 +2192,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
 
+
         String query = "SELECT * FROM Pengguna p "
                 + "JOIN nonPengguna np ON p.IDNonPengguna = np.id "
                 + "WHERE p.username=? AND p.password=?";
@@ -2193,6 +2201,7 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         try {
             Connection conn = DatabaseConnection.getConnection();
+
             PreparedStatement pst = conn.prepareStatement(query);
             pst.setString(1, username);
             pst.setString(2, password);
@@ -2206,6 +2215,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 nf.setMinimumFractionDigits(2);
                 nf.setMaximumFractionDigits(2);
 
+
                 String namaLengkap = rs.getString("nama");
                 String namaPertama = namaLengkap.split(" ")[0];
                 labelPengguna.setText("Selamat datang, " + namaPertama);
@@ -2213,13 +2223,13 @@ public class MBankingGUI extends javax.swing.JFrame {
                 double saldo = rs.getDouble("saldo");
                 String saldoFormatted = nf.format(saldo);
                 labelSaldo.setText(saldoFormatted);
-
                 txtUsername.setText("");
                 txtPassword.setText("");
                 kembaliKeBeranda();
             }
         } catch (SQLException e) {
             e.printStackTrace();
+
         }
     }//GEN-LAST:event_btnSubmitLoginActionPerformed
 
@@ -2392,6 +2402,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRiwayatActionPerformed
 
     private void btnTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTagihanActionPerformed
+
         if (isLoggedIn) {
             CardLayout cl = (CardLayout) mainPanel.getLayout();
             cl.show(mainPanel, "cardTagihan");
@@ -2399,12 +2410,14 @@ public class MBankingGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Anda belum masuk");
         }
 
+
     }//GEN-LAST:event_btnTagihanActionPerformed
 
-    private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
+    private void btnBRI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBRI1ActionPerformed
         CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardDaftar1");
-    }//GEN-LAST:event_btnDaftarActionPerformed
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnBRI1ActionPerformed
+
 
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         setStatusLogin(false);
@@ -2414,9 +2427,63 @@ public class MBankingGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
+    private void btnMandiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMandiriActionPerformed
         CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardLogin");
-    }//GEN-LAST:event_btnMasukActionPerformed
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnMandiriActionPerformed
+
+    private void btnBCAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBCAActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnBCAActionPerformed
+
+    private void btnBNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBNIActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnBNIActionPerformed
+
+    private void btnBSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBSIActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnBSIActionPerformed
+
+    private void btnPermataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPermataActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnPermataActionPerformed
+
+    private void btnTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferActionPerformed
+        
+    }//GEN-LAST:event_btnTransferActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnKeluarRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarRiwayatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKeluarRiwayatActionPerformed
+
+    private void btnBankTujuanKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBankTujuanKeluarActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardBeranda");
+    }//GEN-LAST:event_btnBankTujuanKeluarActionPerformed
+
+    private void btnTransfer2KeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfer2KeluarActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer");
+    }//GEN-LAST:event_btnTransfer2KeluarActionPerformed
+
+    private void btnSelanjutnya2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelanjutnya2ActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer3");
+    }//GEN-LAST:event_btnSelanjutnya2ActionPerformed
+
+    private void btnTransfer2Keluar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfer2Keluar1ActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnTransfer2Keluar1ActionPerformed
 
     private void btnEWalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEWalletActionPerformed
         if (isLoggedIn) {
@@ -2649,6 +2716,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
@@ -2692,6 +2760,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel namaPengguna1;
     private javax.swing.JLabel nomorHpPengguna1;
     private javax.swing.JLabel nomorRekening1;
+    private javax.swing.JPanel panelAlasTransfer2;
     private javax.swing.JPanel panelBeranda;
     private javax.swing.JPanel panelDaftar1;
     private javax.swing.JPanel panelDaftarMBanking;
