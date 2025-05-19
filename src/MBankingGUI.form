@@ -590,6 +590,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -618,6 +619,7 @@
                           <Component id="jButton1" min="-2" pref="42" max="-2" attributes="0"/>
                           <EmptySpace pref="159" max="32767" attributes="0"/>
                       </Group>
+
                   </Group>
               </Group>
             </DimensionLayout>
@@ -664,7 +666,7 @@
                               <Component id="txtRekening" min="-2" pref="300" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" pref="172" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <EmptySpace pref="43" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -839,6 +841,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKembaliActionPerformed"/>
               </Events>
             </Component>
+
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelDaftarMBanking">
