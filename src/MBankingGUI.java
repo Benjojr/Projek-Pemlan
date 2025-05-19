@@ -21,6 +21,8 @@ public class MBankingGUI extends javax.swing.JFrame {
 
     private boolean isLoggedIn;
     private static Connection connection = null;
+    private static String temp_nama;
+    private static String temp_pin;
 
     /**
      * Creates new form MBankingGUI
@@ -85,15 +87,17 @@ public class MBankingGUI extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         btnKonfirmasi = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         panelDaftarMBanking = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         kolomBuatNamaPengguna = new javax.swing.JTextField();
-        kolomBuatKataSandi = new javax.swing.JTextField();
-        kolomBuatKonfirmasiSandi = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        labelPesanKesalahan = new javax.swing.JLabel();
+        kolomBuatKataSandi = new javax.swing.JPasswordField();
+        kolomBuatKonfirmasiSandi = new javax.swing.JPasswordField();
         btnKonfirmasiBuatAkun = new javax.swing.JButton();
         panelInfoRekening = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -673,6 +677,14 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
+
+        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
+        btnKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKembaliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelDaftar1Layout = new javax.swing.GroupLayout(panelDaftar1);
         panelDaftar1.setLayout(panelDaftar1Layout);
         panelDaftar1Layout.setHorizontalGroup(
@@ -681,23 +693,42 @@ public class MBankingGUI extends javax.swing.JFrame {
             .addGroup(panelDaftar1Layout.createSequentialGroup()
                 .addGroup(panelDaftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDaftar1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(btnKonfirmasi, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelDaftar1Layout.createSequentialGroup()
+
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelDaftar1Layout.createSequentialGroup()
+                        .addGroup(panelDaftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDaftar1Layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(btnKonfirmasi, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelDaftar1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(panelDaftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDaftar1Layout.createSequentialGroup()
+                    .addGap(159, 159, 159)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(159, Short.MAX_VALUE)))
         );
         panelDaftar1Layout.setVerticalGroup(
             panelDaftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDaftar1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+
+                .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnKonfirmasi, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(28, 28, 28))
+            .addGroup(panelDaftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDaftar1Layout.createSequentialGroup()
+                    .addGap(299, 299, 299)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(299, Short.MAX_VALUE)))
+
         );
 
         mainPanel.add(panelDaftar1, "cardDaftar1");
@@ -718,25 +749,21 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
-        kolomBuatKataSandi.setFont(new java.awt.Font("Segoe UI", 0, 7)); // NOI18N
-        kolomBuatKataSandi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kolomBuatKataSandiActionPerformed(evt);
-            }
-        });
-
-        kolomBuatKonfirmasiSandi.setFont(new java.awt.Font("Segoe UI", 0, 7)); // NOI18N
-        kolomBuatKonfirmasiSandi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kolomBuatKonfirmasiSandiActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         jLabel3.setText("Password");
 
         jLabel8.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         jLabel8.setText("Ulangi Password");
+
+        labelPesanKesalahan.setFont(new java.awt.Font("Montserrat Medium", 0, 10)); // NOI18N
+        labelPesanKesalahan.setForeground(new java.awt.Color(255, 51, 51));
+        labelPesanKesalahan.setText(" ");
+
+        kolomBuatKataSandi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kolomBuatKataSandiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -747,19 +774,16 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kolomBuatNamaPengguna)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(112, 112, 112))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kolomBuatKataSandi, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
                             .addComponent(jLabel3))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(kolomBuatKonfirmasiSandi, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kolomBuatNamaPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelPesanKesalahan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(kolomBuatKataSandi, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                                .addComponent(kolomBuatKonfirmasiSandi))
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -769,16 +793,18 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kolomBuatNamaPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(kolomBuatNamaPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(kolomBuatKataSandi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kolomBuatKonfirmasiSandi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(kolomBuatKonfirmasiSandi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelPesanKesalahan)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         btnKonfirmasiBuatAkun.setText("KONFIRMASI");
@@ -812,9 +838,9 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addComponent(jLabel18)
                 .addGap(89, 89, 89)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKonfirmasiBuatAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelDaftarMBanking, "cardDaftarMBanking");
@@ -2143,16 +2169,17 @@ public class MBankingGUI extends javax.swing.JFrame {
     }
 
     public class DatabaseConnection {
+
         public static Connection getConnection() throws SQLException {
             if (connection == null || connection.isClosed()) {
                 String url = "jdbc:sqlserver://benxyz.database.windows.net:1433;"
-                        +"database=ProjectPemlan;"
-                        +"user=hihanghoheng@benxyz;"
-                        +"password=Mucacos_26;"
-                        +"encrypt=true;"
-                        +"trustServerCertificate=false;"
-                        +"hostNameInCertificate=*.database.windows.net;"
-                        +"loginTimeout=30;";
+                        + "database=ProjectPemlan;"
+                        + "user=hihanghoheng@benxyz;"
+                        + "password=Mucacos_26;"
+                        + "encrypt=true;"
+                        + "trustServerCertificate=false;"
+                        + "hostNameInCertificate=*.database.windows.net;"
+                        + "loginTimeout=30;";
                 try {
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                     connection = DriverManager.getConnection(url);
@@ -2198,7 +2225,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         String password = txtPassword.getText();
 
         String query = "SELECT * FROM Pengguna p "
-                + "JOIN nonPengguna np ON p.IDNonPengguna = np.id "
+                + "JOIN nonPengguna np ON p.NPID = np.id "
                 + "WHERE p.username=? AND p.password=?";
 
         Locale localeID = new Locale("id", "ID");
@@ -2245,14 +2272,6 @@ public class MBankingGUI extends javax.swing.JFrame {
     private void kolomBuatNamaPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolomBuatNamaPenggunaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_kolomBuatNamaPenggunaActionPerformed
-
-    private void kolomBuatKataSandiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolomBuatKataSandiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kolomBuatKataSandiActionPerformed
-
-    private void kolomBuatKonfirmasiSandiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolomBuatKonfirmasiSandiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kolomBuatKonfirmasiSandiActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         kembaliKeBeranda();
@@ -2315,12 +2334,20 @@ public class MBankingGUI extends javax.swing.JFrame {
             pst.setString(6, email);
 
             ResultSet rs = pst.executeQuery();
-
             if (!rs.next()) {
                 JOptionPane.showMessageDialog(null, "Informasi yang anda masukkan salah");
             } else {
+                temp_nama = rs.getString("nama");
+                temp_pin = rs.getString("PIN");
                 CardLayout cl = (CardLayout) mainPanel.getLayout();
                 cl.show(mainPanel, "cardDaftarMBanking");
+
+                txtRekening.setText("");
+                txtPIN.setText("");
+                txtNoHP.setText("");
+                txtNama.setText("");
+                txtNIK.setText("");
+                txtEmail.setText("");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -2328,8 +2355,40 @@ public class MBankingGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKonfirmasiActionPerformed
 
     private void btnKonfirmasiBuatAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonfirmasiBuatAkunActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardLogin");
+        String username = kolomBuatNamaPengguna.getText();
+        String password = kolomBuatKataSandi.getText();
+        String konfirmasiPassword = kolomBuatKonfirmasiSandi.getText();
+        boolean terkonfirmasi = password.equals(konfirmasiPassword);
+        if (!terkonfirmasi) {
+            labelPesanKesalahan.setText("Password yang dimasukkan tidak sesuai!");
+        } else {
+            try {
+                String query = "INSERT INTO Pengguna (username, password, NPID) "
+                        + "SELECT ?, ?, id FROM nonPengguna WHERE nama=? AND PIN=?";
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement pst = conn.prepareStatement(query);
+                pst.setString(1, username);
+                pst.setString(2, password);
+                pst.setString(3, temp_nama);
+                pst.setString(4, temp_pin);
+
+                int rowsInserted = pst.executeUpdate();
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Akun berhasil dibuat!");
+                    CardLayout cl = (CardLayout) mainPanel.getLayout();
+                    cl.show(mainPanel, "cardLogin");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal membuat akun.");
+                    kembaliKeBeranda();
+                }
+
+                kolomBuatNamaPengguna.setText("");
+                kolomBuatKataSandi.setText("");
+                kolomBuatKonfirmasiSandi.setText("");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_btnKonfirmasiBuatAkunActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
@@ -2515,9 +2574,19 @@ public class MBankingGUI extends javax.swing.JFrame {
         kembaliKeBeranda();
     }//GEN-LAST:event_btnTransfer1ActionPerformed
 
+
+    private void kolomBuatKataSandiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolomBuatKataSandiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kolomBuatKataSandiActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         kembaliKeBeranda();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+        kembaliKeBeranda();
+    }//GEN-LAST:event_btnKembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2579,6 +2648,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnEWallet;
     private javax.swing.JButton btnKeluar;
     private javax.swing.JButton btnKeluarRiwayat;
+    private javax.swing.JButton btnKembali;
     private javax.swing.JToggleButton btnKonfirmasi;
     private javax.swing.JButton btnKonfirmasiBuatAkun;
     private javax.swing.JButton btnMandiri;
@@ -2691,8 +2761,8 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JLabel jenisRekening1;
     private javax.swing.JLabel judulEWallet;
-    private javax.swing.JTextField kolomBuatKataSandi;
-    private javax.swing.JTextField kolomBuatKonfirmasiSandi;
+    private javax.swing.JPasswordField kolomBuatKataSandi;
+    private javax.swing.JPasswordField kolomBuatKonfirmasiSandi;
     private javax.swing.JTextField kolomBuatNamaPengguna;
     private javax.swing.JLabel labelDana;
     private javax.swing.JLabel labelGopay;
@@ -2701,6 +2771,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelOvo;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelPengguna;
+    private javax.swing.JLabel labelPesanKesalahan;
     private javax.swing.JLabel labelRekening;
     private javax.swing.JLabel labelSaldo;
     private javax.swing.JLabel labelShopeepay;
