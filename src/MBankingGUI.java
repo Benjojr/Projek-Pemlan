@@ -118,11 +118,12 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         namaPengguna1 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jenisRekening1 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
         nomorRekening1 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        usernameInfo = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         panelEWallet = new javax.swing.JPanel();
         judulEWallet = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -855,23 +856,34 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         panelInfoRekening.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel3.setBackground(new java.awt.Color(26, 188, 156));
+        jPanel3.setBackground(new java.awt.Color(236, 234, 234));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel23.setText("Email Pengguna");
+        jLabel23.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
+        jLabel23.setText("Email");
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel24.setText("Nama Pengguna");
+        nomorHpPengguna1.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel25.setText("Nomor HP Pengguna");
+        jLabel24.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
+        jLabel24.setText("Nama");
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        emailPengguna1.setBackground(new java.awt.Color(255, 255, 255));
+        emailPengguna1.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+
+        jLabel25.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
+        jLabel25.setText("Nomor HP");
+
+        namaPengguna1.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+
+        jLabel26.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
         jLabel26.setText("Nomor Rekening");
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel27.setText("Jenis Rekening");
+        nomorRekening1.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+
+        jLabel27.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
+        jLabel27.setText("Username");
+
+        usernameInfo.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -881,18 +893,18 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailPengguna1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usernameInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nomorRekening1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nomorHpPengguna1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(namaPengguna1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(nomorHpPengguna1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nomorRekening1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jenisRekening1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -902,26 +914,26 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailPengguna1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(namaPengguna1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomorHpPengguna1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nomorRekening1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jenisRekening1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addComponent(usernameInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
-        jLabel22.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 24)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Montserrat Medium", 0, 24)); // NOI18N
         jLabel22.setText("INFORMASI AKUN");
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -932,31 +944,43 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/profile.png"))); // NOI18N
+        jLabel10.setMaximumSize(new java.awt.Dimension(50, 50));
+
         javax.swing.GroupLayout panelInfoRekeningLayout = new javax.swing.GroupLayout(panelInfoRekening);
         panelInfoRekening.setLayout(panelInfoRekeningLayout);
         panelInfoRekeningLayout.setHorizontalGroup(
             panelInfoRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInfoRekeningLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(panelInfoRekeningLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel22)
-                .addContainerGap(62, Short.MAX_VALUE))
-            .addGroup(panelInfoRekeningLayout.createSequentialGroup()
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelInfoRekeningLayout.createSequentialGroup()
+                .addGroup(panelInfoRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInfoRekeningLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelInfoRekeningLayout.createSequentialGroup()
+                        .addGroup(panelInfoRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelInfoRekeningLayout.createSequentialGroup()
+                                .addGap(163, 163, 163)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelInfoRekeningLayout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jLabel22)))
+                        .addGap(0, 66, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelInfoRekeningLayout.setVerticalGroup(
             panelInfoRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInfoRekeningLayout.createSequentialGroup()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel22)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelInfoRekening, "cardInfoRekening");
@@ -2538,14 +2562,33 @@ public class MBankingGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEWalletActionPerformed
 
-    private void btnRekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekeningActionPerformed
+    private void btnRekeningActionPerformed(java.awt.event.ActionEvent evt) {                                            
         if (isLoggedIn) {
+            String query = "SELECT * FROM Pengguna p JOIN nonPengguna np ON p.NPID = np.id WHERE p.id = ?";
+            try {
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement pst = conn.prepareStatement(query);
+                pst.setString(1, PID);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    emailPengguna1.setText(rs.getString("email"));
+                    namaPengguna1.setText(rs.getString("nama"));
+                    nomorHpPengguna1.setText(rs.getString("noHP"));
+                    nomorRekening1.setText(rs.getString("noRek"));
+                    usernameInfo.setText(rs.getString("username"));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Data Pengguna Tidak Ditemukan, silahkan Login Ulang!");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             CardLayout cl = (CardLayout) mainPanel.getLayout();
             cl.show(mainPanel, "cardInfoRekening");
         } else {
             JOptionPane.showMessageDialog(null, "Anda belum masuk");
         }
-    }//GEN-LAST:event_btnRekeningActionPerformed
+    }
 
     private void btnTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferActionPerformed
         if (isLoggedIn) {
@@ -2831,6 +2874,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -2890,7 +2934,6 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JLabel jenisRekening1;
     private javax.swing.JLabel judulEWallet;
     private javax.swing.JPasswordField kolomBuatKataSandi;
     private javax.swing.JPasswordField kolomBuatKonfirmasiSandi;
@@ -2936,5 +2979,6 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtRekening;
     private javax.swing.JTextField txtUsername;
+    private javax.swing.JLabel usernameInfo;
     // End of variables declaration//GEN-END:variables
 }
