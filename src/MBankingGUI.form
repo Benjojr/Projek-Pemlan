@@ -4248,6 +4248,7 @@
                 <Component class="javax.swing.JTextField" name="textFieldNomorRekening1">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldNomorRekening1ActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textFieldNomorRekening1KeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel52">
@@ -4293,6 +4294,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldNominal1">
                   <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textFieldNominal1KeyReleased"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textFieldNominal1KeyTyped"/>
                   </Events>
                 </Component>
