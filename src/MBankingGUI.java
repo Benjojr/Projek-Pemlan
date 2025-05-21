@@ -2008,6 +2008,11 @@ public class MBankingGUI extends javax.swing.JFrame {
                 textFieldNomorRekening1ActionPerformed(evt);
             }
         });
+        textFieldNomorRekening1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldNomorRekening1KeyTyped(evt);
+            }
+        });
 
         jLabel52.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
         jLabel52.setText("Masukan Nomor Rekening");
@@ -2033,6 +2038,9 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
 
         textFieldNominal1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textFieldNominal1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 textFieldNominal1KeyTyped(evt);
             }
@@ -2540,6 +2548,7 @@ public class MBankingGUI extends javax.swing.JFrame {
 
     private void btnRekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekeningActionPerformed
         if (isLoggedIn) {
+
             CardLayout cl = (CardLayout) mainPanel.getLayout();
             cl.show(mainPanel, "cardInfoRekening");
         } else {
@@ -2718,6 +2727,26 @@ public class MBankingGUI extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_textFieldNominal1KeyTyped
+
+    private void textFieldNomorRekening1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldNomorRekening1KeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFieldNomorRekening1KeyTyped
+
+    private void textFieldNominal1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldNominal1KeyReleased
+        String text = textFieldNominal1.getText().replaceAll("[^\\d]", ""); // hanya digit
+        if (!text.isEmpty()) {
+            try {
+                long value = Long.parseLong(text);
+                java.text.NumberFormat format = java.text.NumberFormat.getInstance(new java.util.Locale("id", "ID"));
+                textFieldNominal1.setText(format.format(value));
+            } catch (NumberFormatException e) {
+                textFieldNominal1.setText("");
+            }
+        }
+    }//GEN-LAST:event_textFieldNominal1KeyReleased
 
     /**
      * @param args the command line arguments
