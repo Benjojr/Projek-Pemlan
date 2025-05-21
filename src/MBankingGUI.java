@@ -8,6 +8,8 @@ import java.sql.DriverManager;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,8 +23,16 @@ public class MBankingGUI extends javax.swing.JFrame {
 
     private boolean isLoggedIn;
     private static Connection connection = null;
-    private static String temp_nama;
-    private static String temp_pin;
+    private static String temp_NPID;
+    private static String NPID;
+    private static String PID;
+    private static String bank;
+    private static String TnoRek;
+    private static double Tnominal;
+    private static String TPIN;
+
+    Locale localeID = new Locale("id", "ID");
+    NumberFormat nf = NumberFormat.getCurrencyInstance(localeID);
 
     /**
      * Creates new form MBankingGUI
@@ -168,7 +178,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         PanelDonasi = new javax.swing.JPanel();
         PanelJaringan = new javax.swing.JPanel();
-        PanelTVKabel = new javax.swing.JPanel();
         PanelPaketData = new javax.swing.JPanel();
         jButton19 = new javax.swing.JButton();
         jLabel43 = new javax.swing.JLabel();
@@ -182,6 +191,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
+        PanelTVKabel = new javax.swing.JPanel();
         PanelPendidikan = new javax.swing.JPanel();
         PanelPDAM = new javax.swing.JPanel();
         PanelPLN = new javax.swing.JPanel();
@@ -192,35 +202,36 @@ public class MBankingGUI extends javax.swing.JFrame {
         tabelRiwayat = new javax.swing.JTable();
         btnKeluarRiwayat = new javax.swing.JButton();
         panelTransfer = new javax.swing.JPanel();
-        faruqiPanelAlasBankTujuan = new javax.swing.JPanel();
-        jLabel52 = new javax.swing.JLabel();
-        faruqiPanelBRI = new javax.swing.JPanel();
-        btnBRI1 = new javax.swing.JButton();
-        faruqiPanelMandiri = new javax.swing.JPanel();
-        btnMandiri = new javax.swing.JButton();
-        faruqiPanelBCA = new javax.swing.JPanel();
-        btnBCA = new javax.swing.JButton();
-        faruqiPanelBNI = new javax.swing.JPanel();
-        btnBNI = new javax.swing.JButton();
-        faruqiPanelBSI = new javax.swing.JPanel();
-        btnBSI = new javax.swing.JButton();
-        faruqiPanelPermata = new javax.swing.JPanel();
-        btnPermata = new javax.swing.JButton();
-        btnBankTujuanKeluar = new javax.swing.JButton();
+        faruqiPanelAlasBankTujuan1 = new javax.swing.JPanel();
+        jLabel55 = new javax.swing.JLabel();
+        faruqiPanelBRI1 = new javax.swing.JPanel();
+        btnBRI2 = new javax.swing.JButton();
+        faruqiPanelMandiri1 = new javax.swing.JPanel();
+        btnMandiri1 = new javax.swing.JButton();
+        faruqiPanelBCA1 = new javax.swing.JPanel();
+        btnBCA1 = new javax.swing.JButton();
+        faruqiPanelBNI1 = new javax.swing.JPanel();
+        btnBNI1 = new javax.swing.JButton();
+        faruqiPanelBSI1 = new javax.swing.JPanel();
+        btnBSI1 = new javax.swing.JButton();
+        faruqiPanelPermata1 = new javax.swing.JPanel();
+        btnPermata1 = new javax.swing.JButton();
+        btnBankTujuanKeluar1 = new javax.swing.JButton();
         panelTransfer2 = new javax.swing.JPanel();
-        btnTransfer2Keluar = new javax.swing.JButton();
-        btnSelanjutnya2 = new javax.swing.JButton();
-        jLabel54 = new javax.swing.JLabel();
-        textFieldNominal = new javax.swing.JTextField();
-        jLabel53 = new javax.swing.JLabel();
-        textFieldNomorRekening = new javax.swing.JTextField();
+        panelAlasTransfer2 = new javax.swing.JPanel();
+        textFieldNomorRekening1 = new javax.swing.JTextField();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        btnSelanjutnya3 = new javax.swing.JButton();
+        btnTransfer2Keluar2 = new javax.swing.JButton();
+        textFieldNominal1 = new javax.swing.JTextField();
         panelTransfer3 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel51 = new javax.swing.JLabel();
-        textFieldPIN = new javax.swing.JTextField();
-        btnTransfer1 = new javax.swing.JButton();
-        btnTransfer2Keluar1 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel53 = new javax.swing.JLabel();
+        btnTransfer2 = new javax.swing.JButton();
+        textFieldPIN1 = new javax.swing.JPasswordField();
+        btnTransfer2Keluar3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -258,7 +269,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        labelPengguna.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        labelPengguna.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         labelPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user.png"))); // NOI18N
         labelPengguna.setText("Anda belum masuk");
 
@@ -339,7 +350,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                     .addComponent(labelRekening, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                     .addComponent(labelJudulSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(139, 139, 139))
         );
         bgrRekeningLayout.setVerticalGroup(
             bgrRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,19 +397,15 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBerandaLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelPengguna, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panelBerandaLayout.createSequentialGroup()
-                                .addComponent(LogoBgr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBerandaLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(btnMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                                .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46))
-                            .addComponent(bgrRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(LogoBgr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBerandaLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                        .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
                     .addGroup(panelBerandaLayout.createSequentialGroup()
                         .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelBerandaLayout.createSequentialGroup()
@@ -425,9 +432,15 @@ public class MBankingGUI extends javax.swing.JFrame {
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBerandaLayout.createSequentialGroup()
                                         .addGap(33, 33, 33)
-                                        .addComponent(btnEWallet, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                        .addComponent(btnEWallet, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(panelBerandaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(labelPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBerandaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bgrRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6))
         );
         panelBerandaLayout.setVerticalGroup(
             panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,15 +449,15 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LogoBgr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addComponent(labelPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(btnDaftar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bgrRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnTransfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRekening, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
@@ -677,7 +690,6 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
-
         btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -689,11 +701,9 @@ public class MBankingGUI extends javax.swing.JFrame {
         panelDaftar1.setLayout(panelDaftar1Layout);
         panelDaftar1Layout.setHorizontalGroup(
             panelDaftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelDaftar1Layout.createSequentialGroup()
                 .addGroup(panelDaftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDaftar1Layout.createSequentialGroup()
-
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelDaftar1Layout.createSequentialGroup()
@@ -716,7 +726,6 @@ public class MBankingGUI extends javax.swing.JFrame {
             panelDaftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDaftar1Layout.createSequentialGroup()
                 .addContainerGap()
-
                 .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -728,7 +737,6 @@ public class MBankingGUI extends javax.swing.JFrame {
                     .addGap(299, 299, 299)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(299, Short.MAX_VALUE)))
-
         );
 
         mainPanel.add(panelDaftar1, "cardDaftar1");
@@ -871,18 +879,21 @@ public class MBankingGUI extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailPengguna1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(emailPengguna1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(namaPengguna1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(nomorHpPengguna1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nomorRekening1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jenisRekening1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -914,7 +925,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel22.setText("INFORMASI AKUN");
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton7.setText("<");
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -934,14 +945,14 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addContainerGap(62, Short.MAX_VALUE))
             .addGroup(panelInfoRekeningLayout.createSequentialGroup()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelInfoRekeningLayout.setVerticalGroup(
             panelInfoRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInfoRekeningLayout.createSequentialGroup()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel22)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1520,19 +1531,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         mainPanel.add(PanelJaringan, "cardJaringan");
 
-        javax.swing.GroupLayout PanelTVKabelLayout = new javax.swing.GroupLayout(PanelTVKabel);
-        PanelTVKabel.setLayout(PanelTVKabelLayout);
-        PanelTVKabelLayout.setHorizontalGroup(
-            PanelTVKabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        PanelTVKabelLayout.setVerticalGroup(
-            PanelTVKabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-
-        mainPanel.add(PanelTVKabel, "cardTV");
-
         PanelPaketData.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
@@ -1640,6 +1638,19 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         mainPanel.add(PanelPaketData, "cardPaketData");
 
+        javax.swing.GroupLayout PanelTVKabelLayout = new javax.swing.GroupLayout(PanelTVKabel);
+        PanelTVKabel.setLayout(PanelTVKabelLayout);
+        PanelTVKabelLayout.setHorizontalGroup(
+            PanelTVKabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+        );
+        PanelTVKabelLayout.setVerticalGroup(
+            PanelTVKabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(PanelTVKabel, "cardTV");
+
         javax.swing.GroupLayout PanelPendidikanLayout = new javax.swing.GroupLayout(PanelPendidikan);
         PanelPendidikan.setLayout(PanelPendidikanLayout);
         PanelPendidikanLayout.setHorizontalGroup(
@@ -1735,398 +1746,435 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         mainPanel.add(panelRiwayatTagihan, "cardRiwayat");
 
-        faruqiPanelAlasBankTujuan.setBackground(new java.awt.Color(255, 255, 255));
+        faruqiPanelAlasBankTujuan1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel52.setFont(new java.awt.Font("Rockwell Condensed", 1, 24)); // NOI18N
-        jLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank.png"))); // NOI18N
-        jLabel52.setText("PILIH BANK TUJUAN");
-        jLabel52.setIconTextGap(20);
+        jLabel55.setFont(new java.awt.Font("Rockwell Condensed", 1, 24)); // NOI18N
+        jLabel55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank.png"))); // NOI18N
+        jLabel55.setText("PILIH BANK TUJUAN");
+        jLabel55.setIconTextGap(20);
 
-        faruqiPanelBRI.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        faruqiPanelBRI1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        btnBRI1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBRI1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo_BRI15.png"))); // NOI18N
-        btnBRI1.setText("Bank Rakyat indonesia (BRI)");
-        btnBRI1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnBRI1.setIconTextGap(10);
-        btnBRI1.addActionListener(new java.awt.event.ActionListener() {
+        btnBRI2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnBRI2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo_BRI15.png"))); // NOI18N
+        btnBRI2.setText("Bank Rakyat indonesia (BRI)");
+        btnBRI2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBRI2.setIconTextGap(10);
+        btnBRI2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBRI1ActionPerformed(evt);
+                btnBRI2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout faruqiPanelBRILayout = new javax.swing.GroupLayout(faruqiPanelBRI);
-        faruqiPanelBRI.setLayout(faruqiPanelBRILayout);
-        faruqiPanelBRILayout.setHorizontalGroup(
-            faruqiPanelBRILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelBRILayout.createSequentialGroup()
+        javax.swing.GroupLayout faruqiPanelBRI1Layout = new javax.swing.GroupLayout(faruqiPanelBRI1);
+        faruqiPanelBRI1.setLayout(faruqiPanelBRI1Layout);
+        faruqiPanelBRI1Layout.setHorizontalGroup(
+            faruqiPanelBRI1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelBRI1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBRI1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addComponent(btnBRI2, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        faruqiPanelBRILayout.setVerticalGroup(
-            faruqiPanelBRILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelBRILayout.createSequentialGroup()
+        faruqiPanelBRI1Layout.setVerticalGroup(
+            faruqiPanelBRI1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelBRI1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBRI1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBRI2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        faruqiPanelMandiri.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        faruqiPanelMandiri1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        btnMandiri.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnMandiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank_mandiri20.png"))); // NOI18N
-        btnMandiri.setText("Bank Mandiri");
-        btnMandiri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMandiri.setIconTextGap(10);
-        btnMandiri.addActionListener(new java.awt.event.ActionListener() {
+        btnMandiri1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnMandiri1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank_mandiri20.png"))); // NOI18N
+        btnMandiri1.setText("Bank Mandiri");
+        btnMandiri1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMandiri1.setIconTextGap(10);
+        btnMandiri1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMandiriActionPerformed(evt);
+                btnMandiri1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout faruqiPanelMandiriLayout = new javax.swing.GroupLayout(faruqiPanelMandiri);
-        faruqiPanelMandiri.setLayout(faruqiPanelMandiriLayout);
-        faruqiPanelMandiriLayout.setHorizontalGroup(
-            faruqiPanelMandiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelMandiriLayout.createSequentialGroup()
+        javax.swing.GroupLayout faruqiPanelMandiri1Layout = new javax.swing.GroupLayout(faruqiPanelMandiri1);
+        faruqiPanelMandiri1.setLayout(faruqiPanelMandiri1Layout);
+        faruqiPanelMandiri1Layout.setHorizontalGroup(
+            faruqiPanelMandiri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelMandiri1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnMandiri, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addComponent(btnMandiri1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        faruqiPanelMandiriLayout.setVerticalGroup(
-            faruqiPanelMandiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelMandiriLayout.createSequentialGroup()
+        faruqiPanelMandiri1Layout.setVerticalGroup(
+            faruqiPanelMandiri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelMandiri1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnMandiri, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMandiri1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        faruqiPanelBCA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        faruqiPanelBCA1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        btnBCA.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBCA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_BCA20.jpg"))); // NOI18N
-        btnBCA.setText("Bank Central Asia (BCA)");
-        btnBCA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnBCA.setIconTextGap(10);
-        btnBCA.addActionListener(new java.awt.event.ActionListener() {
+        btnBCA1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnBCA1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_BCA20.jpg"))); // NOI18N
+        btnBCA1.setText("Bank Central Asia (BCA)");
+        btnBCA1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBCA1.setIconTextGap(10);
+        btnBCA1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBCAActionPerformed(evt);
+                btnBCA1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout faruqiPanelBCALayout = new javax.swing.GroupLayout(faruqiPanelBCA);
-        faruqiPanelBCA.setLayout(faruqiPanelBCALayout);
-        faruqiPanelBCALayout.setHorizontalGroup(
-            faruqiPanelBCALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelBCALayout.createSequentialGroup()
+        javax.swing.GroupLayout faruqiPanelBCA1Layout = new javax.swing.GroupLayout(faruqiPanelBCA1);
+        faruqiPanelBCA1.setLayout(faruqiPanelBCA1Layout);
+        faruqiPanelBCA1Layout.setHorizontalGroup(
+            faruqiPanelBCA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelBCA1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBCA, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addComponent(btnBCA1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        faruqiPanelBCALayout.setVerticalGroup(
-            faruqiPanelBCALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelBCALayout.createSequentialGroup()
+        faruqiPanelBCA1Layout.setVerticalGroup(
+            faruqiPanelBCA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelBCA1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBCA, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBCA1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        faruqiPanelBNI.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        faruqiPanelBNI1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        btnBNI.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank_BNI20.png"))); // NOI18N
-        btnBNI.setText("Bank Negara Indonesia (BNI)");
-        btnBNI.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnBNI.setIconTextGap(10);
-        btnBNI.addActionListener(new java.awt.event.ActionListener() {
+        btnBNI1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnBNI1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank_BNI20.png"))); // NOI18N
+        btnBNI1.setText("Bank Negara Indonesia (BNI)");
+        btnBNI1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBNI1.setIconTextGap(10);
+        btnBNI1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBNIActionPerformed(evt);
+                btnBNI1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout faruqiPanelBNILayout = new javax.swing.GroupLayout(faruqiPanelBNI);
-        faruqiPanelBNI.setLayout(faruqiPanelBNILayout);
-        faruqiPanelBNILayout.setHorizontalGroup(
-            faruqiPanelBNILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelBNILayout.createSequentialGroup()
+        javax.swing.GroupLayout faruqiPanelBNI1Layout = new javax.swing.GroupLayout(faruqiPanelBNI1);
+        faruqiPanelBNI1.setLayout(faruqiPanelBNI1Layout);
+        faruqiPanelBNI1Layout.setHorizontalGroup(
+            faruqiPanelBNI1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelBNI1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBNI, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addComponent(btnBNI1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        faruqiPanelBNILayout.setVerticalGroup(
-            faruqiPanelBNILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelBNILayout.createSequentialGroup()
+        faruqiPanelBNI1Layout.setVerticalGroup(
+            faruqiPanelBNI1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelBNI1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBNI, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBNI1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        faruqiPanelBSI.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        faruqiPanelBSI1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        btnBSI.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBSI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_BSI20.png"))); // NOI18N
-        btnBSI.setText("Bank Syariah Indonesia (BSI)");
-        btnBSI.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnBSI.setIconTextGap(10);
-        btnBSI.addActionListener(new java.awt.event.ActionListener() {
+        btnBSI1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnBSI1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_BSI20.png"))); // NOI18N
+        btnBSI1.setText("Bank Syariah Indonesia (BSI)");
+        btnBSI1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBSI1.setIconTextGap(10);
+        btnBSI1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBSIActionPerformed(evt);
+                btnBSI1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout faruqiPanelBSILayout = new javax.swing.GroupLayout(faruqiPanelBSI);
-        faruqiPanelBSI.setLayout(faruqiPanelBSILayout);
-        faruqiPanelBSILayout.setHorizontalGroup(
-            faruqiPanelBSILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelBSILayout.createSequentialGroup()
+        javax.swing.GroupLayout faruqiPanelBSI1Layout = new javax.swing.GroupLayout(faruqiPanelBSI1);
+        faruqiPanelBSI1.setLayout(faruqiPanelBSI1Layout);
+        faruqiPanelBSI1Layout.setHorizontalGroup(
+            faruqiPanelBSI1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelBSI1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBSI, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addComponent(btnBSI1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        faruqiPanelBSILayout.setVerticalGroup(
-            faruqiPanelBSILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelBSILayout.createSequentialGroup()
+        faruqiPanelBSI1Layout.setVerticalGroup(
+            faruqiPanelBSI1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelBSI1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBSI, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBSI1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        faruqiPanelPermata.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        faruqiPanelPermata1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        btnPermata.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnPermata.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_bankPermata20.png"))); // NOI18N
-        btnPermata.setText("Bank Permata");
-        btnPermata.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPermata.setIconTextGap(10);
-        btnPermata.addActionListener(new java.awt.event.ActionListener() {
+        btnPermata1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnPermata1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_bankPermata20.png"))); // NOI18N
+        btnPermata1.setText("Bank Permata");
+        btnPermata1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPermata1.setIconTextGap(10);
+        btnPermata1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPermataActionPerformed(evt);
+                btnPermata1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout faruqiPanelPermataLayout = new javax.swing.GroupLayout(faruqiPanelPermata);
-        faruqiPanelPermata.setLayout(faruqiPanelPermataLayout);
-        faruqiPanelPermataLayout.setHorizontalGroup(
-            faruqiPanelPermataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelPermataLayout.createSequentialGroup()
+        javax.swing.GroupLayout faruqiPanelPermata1Layout = new javax.swing.GroupLayout(faruqiPanelPermata1);
+        faruqiPanelPermata1.setLayout(faruqiPanelPermata1Layout);
+        faruqiPanelPermata1Layout.setHorizontalGroup(
+            faruqiPanelPermata1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelPermata1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnPermata, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                .addComponent(btnPermata1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        faruqiPanelPermataLayout.setVerticalGroup(
-            faruqiPanelPermataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelPermataLayout.createSequentialGroup()
+        faruqiPanelPermata1Layout.setVerticalGroup(
+            faruqiPanelPermata1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelPermata1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnPermata, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPermata1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnBankTujuanKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
-        btnBankTujuanKeluar.addActionListener(new java.awt.event.ActionListener() {
+        btnBankTujuanKeluar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
+        btnBankTujuanKeluar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBankTujuanKeluarActionPerformed(evt);
+                btnBankTujuanKeluar1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout faruqiPanelAlasBankTujuanLayout = new javax.swing.GroupLayout(faruqiPanelAlasBankTujuan);
-        faruqiPanelAlasBankTujuan.setLayout(faruqiPanelAlasBankTujuanLayout);
-        faruqiPanelAlasBankTujuanLayout.setHorizontalGroup(
-            faruqiPanelAlasBankTujuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelAlasBankTujuanLayout.createSequentialGroup()
+        javax.swing.GroupLayout faruqiPanelAlasBankTujuan1Layout = new javax.swing.GroupLayout(faruqiPanelAlasBankTujuan1);
+        faruqiPanelAlasBankTujuan1.setLayout(faruqiPanelAlasBankTujuan1Layout);
+        faruqiPanelAlasBankTujuan1Layout.setHorizontalGroup(
+            faruqiPanelAlasBankTujuan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelAlasBankTujuan1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(faruqiPanelAlasBankTujuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(faruqiPanelAlasBankTujuanLayout.createSequentialGroup()
-                        .addGroup(faruqiPanelAlasBankTujuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(faruqiPanelBNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(faruqiPanelMandiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(faruqiPanelBRI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(faruqiPanelBCA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(faruqiPanelBSI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(faruqiPanelAlasBankTujuan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(faruqiPanelAlasBankTujuan1Layout.createSequentialGroup()
+                        .addGroup(faruqiPanelAlasBankTujuan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(faruqiPanelBNI1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(faruqiPanelMandiri1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(faruqiPanelBRI1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(faruqiPanelBCA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(faruqiPanelBSI1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(8, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, faruqiPanelAlasBankTujuanLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, faruqiPanelAlasBankTujuan1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel52)
+                        .addComponent(jLabel55)
                         .addGap(62, 62, 62))
-                    .addGroup(faruqiPanelAlasBankTujuanLayout.createSequentialGroup()
-                        .addComponent(faruqiPanelPermata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(faruqiPanelAlasBankTujuan1Layout.createSequentialGroup()
+                        .addComponent(faruqiPanelPermata1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(faruqiPanelAlasBankTujuanLayout.createSequentialGroup()
-                .addComponent(btnBankTujuanKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(faruqiPanelAlasBankTujuan1Layout.createSequentialGroup()
+                .addComponent(btnBankTujuanKeluar1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        faruqiPanelAlasBankTujuanLayout.setVerticalGroup(
-            faruqiPanelAlasBankTujuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(faruqiPanelAlasBankTujuanLayout.createSequentialGroup()
-                .addComponent(btnBankTujuanKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+        faruqiPanelAlasBankTujuan1Layout.setVerticalGroup(
+            faruqiPanelAlasBankTujuan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(faruqiPanelAlasBankTujuan1Layout.createSequentialGroup()
+                .addComponent(btnBankTujuanKeluar1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel52)
+                .addComponent(jLabel55)
                 .addGap(18, 18, 18)
-                .addComponent(faruqiPanelBRI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(faruqiPanelBRI1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(faruqiPanelMandiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(faruqiPanelMandiri1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(faruqiPanelBCA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(faruqiPanelBCA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(faruqiPanelBNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(faruqiPanelBNI1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(faruqiPanelBSI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(faruqiPanelBSI1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(faruqiPanelPermata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(faruqiPanelPermata1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelTransferLayout = new javax.swing.GroupLayout(panelTransfer);
         panelTransfer.setLayout(panelTransferLayout);
         panelTransferLayout.setHorizontalGroup(
             panelTransferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(faruqiPanelAlasBankTujuan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(faruqiPanelAlasBankTujuan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelTransferLayout.setVerticalGroup(
             panelTransferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(faruqiPanelAlasBankTujuan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(faruqiPanelAlasBankTujuan1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         mainPanel.add(panelTransfer, "cardTransfer");
 
-        panelTransfer2.setBackground(new java.awt.Color(255, 255, 255));
+        panelAlasTransfer2.setBackground(new java.awt.Color(255, 255, 255));
+        panelAlasTransfer2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        btnTransfer2Keluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
-        btnTransfer2Keluar.addActionListener(new java.awt.event.ActionListener() {
+        textFieldNomorRekening1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTransfer2KeluarActionPerformed(evt);
+                textFieldNomorRekening1ActionPerformed(evt);
+            }
+        });
+        textFieldNomorRekening1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldNomorRekening1KeyTyped(evt);
             }
         });
 
-        btnSelanjutnya2.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        btnSelanjutnya2.setText("SELANJUTNYA");
-        btnSelanjutnya2.setIconTextGap(15);
-        btnSelanjutnya2.setPreferredSize(new java.awt.Dimension(119, 22));
-        btnSelanjutnya2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel52.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
+        jLabel52.setText("Masukan Nomor Rekening");
+
+        jLabel56.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
+        jLabel56.setText("Masukan Nominal");
+
+        btnSelanjutnya3.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        btnSelanjutnya3.setText("SELANJUTNYA");
+        btnSelanjutnya3.setIconTextGap(15);
+        btnSelanjutnya3.setPreferredSize(new java.awt.Dimension(119, 22));
+        btnSelanjutnya3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelanjutnya2ActionPerformed(evt);
+                btnSelanjutnya3ActionPerformed(evt);
             }
         });
 
-        jLabel54.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
-        jLabel54.setText("Masukan Nominal");
+        btnTransfer2Keluar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
+        btnTransfer2Keluar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransfer2Keluar2ActionPerformed(evt);
+            }
+        });
 
-        jLabel53.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
-        jLabel53.setText("Masukan Nomor Rekening");
+        textFieldNominal1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textFieldNominal1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldNominal1KeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelAlasTransfer2Layout = new javax.swing.GroupLayout(panelAlasTransfer2);
+        panelAlasTransfer2.setLayout(panelAlasTransfer2Layout);
+        panelAlasTransfer2Layout.setHorizontalGroup(
+            panelAlasTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAlasTransfer2Layout.createSequentialGroup()
+                .addGroup(panelAlasTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAlasTransfer2Layout.createSequentialGroup()
+                        .addGroup(panelAlasTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAlasTransfer2Layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
+                                .addComponent(btnSelanjutnya3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnTransfer2Keluar2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelAlasTransfer2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelAlasTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldNomorRekening1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                            .addGroup(panelAlasTransfer2Layout.createSequentialGroup()
+                                .addGroup(panelAlasTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel56)
+                                    .addComponent(jLabel52))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(textFieldNominal1))))
+                .addContainerGap())
+        );
+        panelAlasTransfer2Layout.setVerticalGroup(
+            panelAlasTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAlasTransfer2Layout.createSequentialGroup()
+                .addComponent(btnTransfer2Keluar2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel52)
+                .addGap(18, 18, 18)
+                .addComponent(textFieldNomorRekening1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldNominal1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(btnSelanjutnya3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(204, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout panelTransfer2Layout = new javax.swing.GroupLayout(panelTransfer2);
         panelTransfer2.setLayout(panelTransfer2Layout);
         panelTransfer2Layout.setHorizontalGroup(
             panelTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTransfer2Layout.createSequentialGroup()
-                .addGroup(panelTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTransfer2Layout.createSequentialGroup()
-                        .addGroup(panelTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelTransfer2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnTransfer2Keluar))
-                            .addGroup(panelTransfer2Layout.createSequentialGroup()
-                                .addGap(109, 109, 109)
-                                .addComponent(btnSelanjutnya2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelTransfer2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textFieldNominal)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTransfer2Layout.createSequentialGroup()
-                                .addGroup(panelTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel54)
-                                    .addComponent(jLabel53))
-                                .addGap(0, 148, Short.MAX_VALUE))
-                            .addComponent(textFieldNomorRekening))))
+            .addGroup(panelTransfer2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelAlasTransfer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelTransfer2Layout.setVerticalGroup(
             panelTransfer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTransfer2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnTransfer2Keluar)
-                .addGap(182, 182, 182)
-                .addComponent(jLabel53)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldNomorRekening, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel54)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldNominal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(btnSelanjutnya2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addComponent(panelAlasTransfer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         mainPanel.add(panelTransfer2, "cardTransfer2");
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
-        jLabel51.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        jLabel51.setText("Masukan PIN ATM");
+        jLabel53.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        jLabel53.setText("Masukan PIN ATM");
 
-        btnTransfer1.setFont(new java.awt.Font("Montserrat Medium", 0, 18)); // NOI18N
-        btnTransfer1.setText("Transfer");
-        btnTransfer1.addActionListener(new java.awt.event.ActionListener() {
+        btnTransfer2.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
+        btnTransfer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/send.png"))); // NOI18N
+        btnTransfer2.setText("TRANSFER");
+        btnTransfer2.setIconTextGap(15);
+        btnTransfer2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTransfer1ActionPerformed(evt);
+                btnTransfer2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel51))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(textFieldPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(btnTransfer1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(jLabel53)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnTransfer2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addComponent(textFieldPIN1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addComponent(jLabel51)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textFieldPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(btnTransfer1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addComponent(jLabel53)
+                .addGap(18, 18, 18)
+                .addComponent(textFieldPIN1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(btnTransfer2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66))
         );
 
-        btnTransfer2Keluar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
-        btnTransfer2Keluar1.addActionListener(new java.awt.event.ActionListener() {
+        btnTransfer2Keluar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
+        btnTransfer2Keluar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTransfer2Keluar1ActionPerformed(evt);
+                btnTransfer2Keluar3ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(btnTransfer2Keluar1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(btnTransfer2Keluar3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(btnTransfer2Keluar1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(btnTransfer2Keluar3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(205, 205, 205))
         );
 
@@ -2134,11 +2182,11 @@ public class MBankingGUI extends javax.swing.JFrame {
         panelTransfer3.setLayout(panelTransfer3Layout);
         panelTransfer3Layout.setHorizontalGroup(
             panelTransfer3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelTransfer3Layout.setVerticalGroup(
             panelTransfer3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         mainPanel.add(panelTransfer3, "cardTransfer3");
@@ -2228,8 +2276,6 @@ public class MBankingGUI extends javax.swing.JFrame {
                 + "JOIN nonPengguna np ON p.NPID = np.id "
                 + "WHERE p.username=? AND p.password=?";
 
-        Locale localeID = new Locale("id", "ID");
-
         try {
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement pst = conn.prepareStatement(query);
@@ -2241,9 +2287,6 @@ public class MBankingGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Username atau Password salah!");
             } else {
                 setStatusLogin(true);
-                NumberFormat nf = NumberFormat.getCurrencyInstance(localeID);
-                nf.setMinimumFractionDigits(2);
-                nf.setMaximumFractionDigits(2);
 
                 String namaLengkap = rs.getString("nama");
                 String namaPertama = namaLengkap.split(" ")[0];
@@ -2252,6 +2295,9 @@ public class MBankingGUI extends javax.swing.JFrame {
                 double saldo = rs.getDouble("saldo");
                 String saldoFormatted = nf.format(saldo);
                 labelSaldo.setText(saldoFormatted);
+                PID = rs.getString("id");
+                NPID = rs.getString("NPID");
+                TPIN = rs.getString("PIN");
 
                 txtUsername.setText("");
                 txtPassword.setText("");
@@ -2267,6 +2313,10 @@ public class MBankingGUI extends javax.swing.JFrame {
         btnMasuk.setVisible(!isLoggedIn);
         btnDaftar.setVisible(!isLoggedIn);
         btnKeluar.setVisible(isLoggedIn);
+    }
+
+    private void showRekeningInfo() {
+        String query = "SELECT * FROM nonPengguna WHERE id=?";
     }
 
     private void kolomBuatNamaPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolomBuatNamaPenggunaActionPerformed
@@ -2337,8 +2387,7 @@ public class MBankingGUI extends javax.swing.JFrame {
             if (!rs.next()) {
                 JOptionPane.showMessageDialog(null, "Informasi yang anda masukkan salah");
             } else {
-                temp_nama = rs.getString("nama");
-                temp_pin = rs.getString("PIN");
+                temp_NPID = rs.getString("id");
                 CardLayout cl = (CardLayout) mainPanel.getLayout();
                 cl.show(mainPanel, "cardDaftarMBanking");
 
@@ -2364,13 +2413,12 @@ public class MBankingGUI extends javax.swing.JFrame {
         } else {
             try {
                 String query = "INSERT INTO Pengguna (username, password, NPID) "
-                        + "SELECT ?, ?, id FROM nonPengguna WHERE nama=? AND PIN=?";
+                        + "SELECT ?, ?, id FROM nonPengguna WHERE id=?";
                 Connection conn = DatabaseConnection.getConnection();
                 PreparedStatement pst = conn.prepareStatement(query);
                 pst.setString(1, username);
                 pst.setString(2, password);
-                pst.setString(3, temp_nama);
-                pst.setString(4, temp_pin);
+                pst.setString(3, temp_NPID);
 
                 int rowsInserted = pst.executeUpdate();
                 if (rowsInserted > 0) {
@@ -2496,46 +2544,19 @@ public class MBankingGUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Anda belum masuk");
         }
+        
+        
     }//GEN-LAST:event_btnEWalletActionPerformed
 
     private void btnRekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekeningActionPerformed
         if (isLoggedIn) {
+
             CardLayout cl = (CardLayout) mainPanel.getLayout();
             cl.show(mainPanel, "cardInfoRekening");
         } else {
             JOptionPane.showMessageDialog(null, "Anda belum masuk");
         }
     }//GEN-LAST:event_btnRekeningActionPerformed
-
-    private void btnBRI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBRI1ActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer2");
-    }//GEN-LAST:event_btnBRI1ActionPerformed
-
-    private void btnMandiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMandiriActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer2");
-    }//GEN-LAST:event_btnMandiriActionPerformed
-
-    private void btnBCAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBCAActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer2");
-    }//GEN-LAST:event_btnBCAActionPerformed
-
-    private void btnBNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBNIActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer2");
-    }//GEN-LAST:event_btnBNIActionPerformed
-
-    private void btnBSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBSIActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer2");
-    }//GEN-LAST:event_btnBSIActionPerformed
-
-    private void btnPermataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPermataActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer2");
-    }//GEN-LAST:event_btnPermataActionPerformed
 
     private void btnTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferActionPerformed
         if (isLoggedIn) {
@@ -2550,31 +2571,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         kembaliKeBeranda();
     }//GEN-LAST:event_btnKeluarRiwayatActionPerformed
 
-    private void btnBankTujuanKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBankTujuanKeluarActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardBeranda");
-    }//GEN-LAST:event_btnBankTujuanKeluarActionPerformed
-
-    private void btnTransfer2Keluar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfer2Keluar1ActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer2");
-    }//GEN-LAST:event_btnTransfer2Keluar1ActionPerformed
-
-    private void btnSelanjutnya2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelanjutnya2ActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer3");
-    }//GEN-LAST:event_btnSelanjutnya2ActionPerformed
-
-    private void btnTransfer2KeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfer2KeluarActionPerformed
-        CardLayout cl = (CardLayout) mainPanel.getLayout();
-        cl.show(mainPanel, "cardTransfer");
-    }//GEN-LAST:event_btnTransfer2KeluarActionPerformed
-
-    private void btnTransfer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfer1ActionPerformed
-        kembaliKeBeranda();
-    }//GEN-LAST:event_btnTransfer1ActionPerformed
-
-
     private void kolomBuatKataSandiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kolomBuatKataSandiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_kolomBuatKataSandiActionPerformed
@@ -2583,10 +2579,176 @@ public class MBankingGUI extends javax.swing.JFrame {
         kembaliKeBeranda();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         kembaliKeBeranda();
     }//GEN-LAST:event_btnKembaliActionPerformed
+
+    private void btnBRI2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBRI2ActionPerformed
+        bank = "BRI";
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnBRI2ActionPerformed
+
+    private void btnMandiri1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMandiri1ActionPerformed
+        bank = "Mandiri";
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnMandiri1ActionPerformed
+
+    private void btnBCA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBCA1ActionPerformed
+        bank = "BCA";
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnBCA1ActionPerformed
+
+    private void btnBNI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBNI1ActionPerformed
+        bank = "BNI";
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnBNI1ActionPerformed
+
+    private void btnBSI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBSI1ActionPerformed
+        bank = "BSI";
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnBSI1ActionPerformed
+
+    private void btnPermata1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPermata1ActionPerformed
+        bank = "PERMATA";
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnPermata1ActionPerformed
+
+    private void btnBankTujuanKeluar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBankTujuanKeluar1ActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardBeranda");
+    }//GEN-LAST:event_btnBankTujuanKeluar1ActionPerformed
+
+    private void btnSelanjutnya3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelanjutnya3ActionPerformed
+        String noRek = textFieldNomorRekening1.getText();
+        String query = "SELECT * FROM nonPengguna WHERE noRek=? AND Bank=?";
+
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setString(1, noRek);
+            pst.setString(2, bank);
+            ResultSet rs = pst.executeQuery();
+
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(null, "Nomor Rekening Tidak Valid!");
+            } else {
+                TnoRek = noRek;
+                String inputNominal = textFieldNominal1.getText();
+                Tnominal = Double.parseDouble(inputNominal);
+                CardLayout cl = (CardLayout) mainPanel.getLayout();
+                cl.show(mainPanel, "cardTransfer3");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Masukan Nominal Yang Valid!", "Eror", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(MBankingGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        textFieldNomorRekening1.setText("");
+        textFieldNominal1.setText("");
+    }//GEN-LAST:event_btnSelanjutnya3ActionPerformed
+
+    private void btnTransfer2Keluar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfer2Keluar2ActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer");
+    }//GEN-LAST:event_btnTransfer2Keluar2ActionPerformed
+
+    private void btnTransfer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfer2ActionPerformed
+        if (textFieldPIN1.getText().equals(TPIN)) {
+            try {
+                Connection conn = DatabaseConnection.getConnection();
+                conn.setAutoCommit(false); // mulai transaksi
+
+                // UPDATE penerima: tambah saldo
+                String queryTambah = "UPDATE nonPengguna SET saldo = saldo+? WHERE noRek=?";
+                PreparedStatement pst1 = conn.prepareStatement(queryTambah);
+                pst1.setDouble(1, Tnominal);
+                pst1.setString(2, TnoRek);
+                int affected1 = pst1.executeUpdate();
+
+                // UPDATE pengirim: kurangi saldo
+                String queryKurang = "UPDATE nonPengguna SET saldo = saldo-? WHERE id =?";
+                PreparedStatement pst2 = conn.prepareStatement(queryKurang);
+                pst2.setDouble(1, Tnominal);
+                pst2.setString(2, NPID);
+                int affected2 = pst2.executeUpdate();
+
+                if (affected1 > 0 && affected2 > 0) {
+                    conn.commit(); // commit jika keduanya berhasil
+                    JOptionPane.showMessageDialog(null, "Transfer Anda Berhasil!");
+                    String querySaldo = "SELECT saldo FROM nonPengguna WHERE id = ?";
+                    PreparedStatement pst3 = conn.prepareStatement(querySaldo);
+                    pst3.setString(1, NPID);
+                    ResultSet rs = pst3.executeQuery();
+
+                    if (rs.next()) {
+                        double saldoBaru = rs.getDouble("saldo");
+                        String saldoFormatted = nf.format(saldoBaru);
+                        labelSaldo.setText(saldoFormatted);
+                    }
+                    kembaliKeBeranda();
+                } else {
+                    conn.rollback(); // rollback jika salah satu gagal
+                    JOptionPane.showMessageDialog(null, "Anda Gagal Transfer!");
+
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                try {
+                    DatabaseConnection.getConnection().rollback();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat transfer.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "PIN Yang Anda Masukan Salah!");
+        }
+    }//GEN-LAST:event_btnTransfer2ActionPerformed
+
+    private void btnTransfer2Keluar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransfer2Keluar3ActionPerformed
+        CardLayout cl = (CardLayout) mainPanel.getLayout();
+        cl.show(mainPanel, "cardTransfer2");
+    }//GEN-LAST:event_btnTransfer2Keluar3ActionPerformed
+
+    private void textFieldNomorRekening1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNomorRekening1ActionPerformed
+
+    }//GEN-LAST:event_textFieldNomorRekening1ActionPerformed
+
+    private void textFieldNominal1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldNominal1KeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFieldNominal1KeyTyped
+
+    private void textFieldNomorRekening1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldNomorRekening1KeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textFieldNomorRekening1KeyTyped
+
+    private void textFieldNominal1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldNominal1KeyReleased
+        String text = textFieldNominal1.getText().replaceAll("[^\\d]", ""); // hanya digit
+        if (!text.isEmpty()) {
+            try {
+                long value = Long.parseLong(text);
+                java.text.NumberFormat format = java.text.NumberFormat.getInstance(new java.util.Locale("id", "ID"));
+                textFieldNominal1.setText(format.format(value));
+            } catch (NumberFormatException e) {
+                textFieldNominal1.setText("");
+            }
+        }
+    }//GEN-LAST:event_textFieldNominal1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -2639,11 +2801,11 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPanel ah3;
     private javax.swing.JPanel bgrLogin;
     private javax.swing.JPanel bgrRekening;
-    private javax.swing.JButton btnBCA;
-    private javax.swing.JButton btnBNI;
-    private javax.swing.JButton btnBRI1;
-    private javax.swing.JButton btnBSI;
-    private javax.swing.JButton btnBankTujuanKeluar;
+    private javax.swing.JButton btnBCA1;
+    private javax.swing.JButton btnBNI1;
+    private javax.swing.JButton btnBRI2;
+    private javax.swing.JButton btnBSI1;
+    private javax.swing.JButton btnBankTujuanKeluar1;
     private javax.swing.JButton btnDaftar;
     private javax.swing.JButton btnEWallet;
     private javax.swing.JButton btnKeluar;
@@ -2651,12 +2813,12 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnKembali;
     private javax.swing.JToggleButton btnKonfirmasi;
     private javax.swing.JButton btnKonfirmasiBuatAkun;
-    private javax.swing.JButton btnMandiri;
+    private javax.swing.JButton btnMandiri1;
     private javax.swing.JButton btnMasuk;
-    private javax.swing.JButton btnPermata;
+    private javax.swing.JButton btnPermata1;
     private javax.swing.JButton btnRekening;
     private javax.swing.JButton btnRiwayat;
-    private javax.swing.JButton btnSelanjutnya2;
+    private javax.swing.JButton btnSelanjutnya3;
     private javax.swing.JButton btnSubmitLogin;
     private javax.swing.JButton btnTagihan;
     private javax.swing.JButton btnTagihanBPJS;
@@ -2669,21 +2831,21 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnTagihanTV;
     private javax.swing.JButton btnTagihanVoucher;
     private javax.swing.JButton btnTransfer;
-    private javax.swing.JButton btnTransfer1;
-    private javax.swing.JButton btnTransfer2Keluar;
-    private javax.swing.JButton btnTransfer2Keluar1;
+    private javax.swing.JButton btnTransfer2;
+    private javax.swing.JButton btnTransfer2Keluar2;
+    private javax.swing.JButton btnTransfer2Keluar3;
     private javax.swing.JLabel emailPengguna1;
     private javax.swing.JToggleButton ewalletDana;
     private javax.swing.JToggleButton ewalletGopay;
     private javax.swing.JToggleButton ewalletOvo;
     private javax.swing.JToggleButton ewalletShopeepay;
-    private javax.swing.JPanel faruqiPanelAlasBankTujuan;
-    private javax.swing.JPanel faruqiPanelBCA;
-    private javax.swing.JPanel faruqiPanelBNI;
-    private javax.swing.JPanel faruqiPanelBRI;
-    private javax.swing.JPanel faruqiPanelBSI;
-    private javax.swing.JPanel faruqiPanelMandiri;
-    private javax.swing.JPanel faruqiPanelPermata;
+    private javax.swing.JPanel faruqiPanelAlasBankTujuan1;
+    private javax.swing.JPanel faruqiPanelBCA1;
+    private javax.swing.JPanel faruqiPanelBNI1;
+    private javax.swing.JPanel faruqiPanelBRI1;
+    private javax.swing.JPanel faruqiPanelBSI1;
+    private javax.swing.JPanel faruqiPanelMandiri1;
+    private javax.swing.JPanel faruqiPanelPermata1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
@@ -2735,21 +2897,21 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2780,6 +2942,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel namaPengguna1;
     private javax.swing.JLabel nomorHpPengguna1;
     private javax.swing.JLabel nomorRekening1;
+    private javax.swing.JPanel panelAlasTransfer2;
     private javax.swing.JPanel panelBeranda;
     private javax.swing.JPanel panelDaftar1;
     private javax.swing.JPanel panelDaftarMBanking;
@@ -2793,9 +2956,9 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelTransfer2;
     private javax.swing.JPanel panelTransfer3;
     private javax.swing.JTable tabelRiwayat;
-    private javax.swing.JTextField textFieldNominal;
-    private javax.swing.JTextField textFieldNomorRekening;
-    private javax.swing.JTextField textFieldPIN;
+    private javax.swing.JTextField textFieldNominal1;
+    private javax.swing.JTextField textFieldNomorRekening1;
+    private javax.swing.JPasswordField textFieldPIN1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNIK;
     private javax.swing.JTextField txtNama;
