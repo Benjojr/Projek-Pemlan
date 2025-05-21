@@ -178,7 +178,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         PanelDonasi = new javax.swing.JPanel();
         PanelJaringan = new javax.swing.JPanel();
-        PanelTVKabel = new javax.swing.JPanel();
         PanelPaketData = new javax.swing.JPanel();
         jButton19 = new javax.swing.JButton();
         jLabel43 = new javax.swing.JLabel();
@@ -192,6 +191,7 @@ public class MBankingGUI extends javax.swing.JFrame {
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
+        PanelTVKabel = new javax.swing.JPanel();
         PanelPendidikan = new javax.swing.JPanel();
         PanelPDAM = new javax.swing.JPanel();
         PanelPLN = new javax.swing.JPanel();
@@ -1531,19 +1531,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         mainPanel.add(PanelJaringan, "cardJaringan");
 
-        javax.swing.GroupLayout PanelTVKabelLayout = new javax.swing.GroupLayout(PanelTVKabel);
-        PanelTVKabel.setLayout(PanelTVKabelLayout);
-        PanelTVKabelLayout.setHorizontalGroup(
-            PanelTVKabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        PanelTVKabelLayout.setVerticalGroup(
-            PanelTVKabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
-
-        mainPanel.add(PanelTVKabel, "cardTV");
-
         PanelPaketData.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
@@ -1650,6 +1637,19 @@ public class MBankingGUI extends javax.swing.JFrame {
         );
 
         mainPanel.add(PanelPaketData, "cardPaketData");
+
+        javax.swing.GroupLayout PanelTVKabelLayout = new javax.swing.GroupLayout(PanelTVKabel);
+        PanelTVKabel.setLayout(PanelTVKabelLayout);
+        PanelTVKabelLayout.setHorizontalGroup(
+            PanelTVKabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+        );
+        PanelTVKabelLayout.setVerticalGroup(
+            PanelTVKabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(PanelTVKabel, "cardTV");
 
         javax.swing.GroupLayout PanelPendidikanLayout = new javax.swing.GroupLayout(PanelPendidikan);
         PanelPendidikan.setLayout(PanelPendidikanLayout);
@@ -2544,6 +2544,8 @@ public class MBankingGUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Anda belum masuk");
         }
+        
+        
     }//GEN-LAST:event_btnEWalletActionPerformed
 
     private void btnRekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekeningActionPerformed
