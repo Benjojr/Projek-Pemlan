@@ -1,0 +1,79 @@
+@startuml
+skinparam linetype ortho
+
+' === DatabaseConnection ===
+class DatabaseConnection {
+    +static getConnection(): Connection
+}
+
+' === Pengguna ===
+class Pengguna {
+    -pid: String
+    -npid: String
+    -namaLengkap: String
+    -noRek: String
+    -saldo: double
+    -pin: String
+    -email: String
+    -noHP: String
+    -username: String
+
+    +Pengguna()
+    +getNamaPertama(): String
+    +getNoRek(): String
+    +getSaldo(): double
+    +getPID(): String
+    +getNPID(): String
+    +getPIN(): String
+    +getEmail(): String
+    +getNoHP(): String
+    +getUsername(): String
+    +getNamaLengkap(): String
+
+    +static login(username: String, password: String): Pengguna
+    +static verifikasiDataAwal(...): String
+    +static buatAkun(...): boolean
+    +static getInfoRekening(pid: String): Pengguna
+}
+
+' === Transfer ===
+class Transfer {
+    -noRekTujuan: String
+    -bankTujuan: String
+    -nominal: double
+
+    +Transfer(noRekTujuan: String, bankTujuan: String, nominal: double)
+    +rekeningTujuanValid(): boolean
+    +prosesTransfer(pengirimNPID: String, pinInput: String, storedPIN: String): boolean
+    +getNominal(): double
+    +static getSaldoBaru(npid: String): double
+}
+
+' === EWallet ===
+class EWallet {
+    +static topUp(NPID: String, inputPIN: String, inputNominal: String): boolean
+}
+
+' === MBankingGUI (logic-only) ===
+class MBankingGUI {
+    -isLoggedIn: boolean
+    -NPID: String
+    -PID: String
+    -TPIN: String
+    -transfer: Transfer
+
+    +MBankingGUI()
+    +btnSubmitLoginActionPerformed()
+    +btnTransfer2ActionPerformed()
+    +updateSaldo()
+}
+
+' === Relations ===
+Pengguna --> DatabaseConnection : uses
+Transfer --> DatabaseConnection : uses
+EWallet --> DatabaseConnection : uses
+
+MBankingGUI --> Pengguna : uses
+MBankingGUI --> Transfer : uses
+MBankingGUI --> EWallet : uses
+@enduml
