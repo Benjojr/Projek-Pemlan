@@ -31,8 +31,8 @@ class Pengguna {
     +getNamaLengkap(): String
 
     +static login(username: String, password: String): Pengguna
-    + static String verifikasiDataAwal(nama: String, nik: String, noRek: String, pin: String, noHP: String, email: String): String
-    + static boolean buatAkun(username: String, password: String, npid: String): boolean
+    +static String verifikasiDataAwal(nama: String, nik: String, noRek: String, pin: String, noHP: String, email: String): String
+    +static boolean buatAkun(username: String, password: String, npid: String): boolean
     +static getInfoRekening(pid: String): Pengguna
 }
 

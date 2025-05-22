@@ -48,7 +48,13 @@ public class Pengguna {
 
     public static String verifikasiDataAwal(String nama, String nik, String noRek, String pin, String noHP,
             String email) throws SQLException {
-        String query = "SELECT * FROM nonPengguna WHERE nama=? AND NIK=? AND noRek=? AND PIN=? AND noHP=? AND email=?";
+        String query = """
+                SELECT np.id, p.id AS pengguna_id
+                FROM nonPengguna np
+                LEFT OUTER JOIN Pengguna p ON np.id = p.NPID
+                WHERE np.nama=? AND np.NIK=? AND np.noRek=? AND np.PIN=? AND np.noHP=? AND np.email=?
+                """;
+
         Connection conn = DatabaseConnection.getConnection();
         PreparedStatement pst = conn.prepareStatement(query);
         pst.setString(1, nama);
@@ -60,9 +66,13 @@ public class Pengguna {
 
         ResultSet rs = pst.executeQuery();
         if (rs.next()) {
-            return rs.getString("id"); // return NPID
+            if (rs.getString("pengguna_id") != null) {
+                return "TERDAFTAR"; // Sudah terdaftar
+            } else {
+                return rs.getString("id"); // NPID dari nonPengguna, belum daftar
+            }
         } else {
-            return null;
+            return null; // Data tidak cocok
         }
     }
 
