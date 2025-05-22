@@ -50,7 +50,8 @@ public class MBankingGUI extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         panelBeranda = new javax.swing.JPanel();
         LogoBgr = new javax.swing.JPanel();
-        Logo = new javax.swing.JLabel();
+        gambarLogo = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         labelPengguna = new javax.swing.JLabel();
         btnMasuk = new javax.swing.JButton();
         btnKeluar = new javax.swing.JButton();
@@ -370,11 +371,16 @@ public class MBankingGUI extends javax.swing.JFrame {
         panelBeranda.setPreferredSize(new java.awt.Dimension(360, 640));
 
         LogoBgr.setBackground(new java.awt.Color(255, 255, 255));
-        LogoBgr.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(255, 102, 51)));
+        LogoBgr.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(102, 102, 102)));
 
-        Logo.setBackground(new java.awt.Color(255, 255, 255));
-        Logo.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        Logo.setText("Java MBanking");
+        gambarLogo.setBackground(new java.awt.Color(255, 255, 255));
+        gambarLogo.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        gambarLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo MBankKu.png"))); // NOI18N
+        gambarLogo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        gambarLogo.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        logo.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        logo.setText("MBankKu");
 
         javax.swing.GroupLayout LogoBgrLayout = new javax.swing.GroupLayout(LogoBgr);
         LogoBgr.setLayout(LogoBgrLayout);
@@ -382,15 +388,19 @@ public class MBankingGUI extends javax.swing.JFrame {
             LogoBgrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogoBgrLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Logo)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(gambarLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LogoBgrLayout.setVerticalGroup(
             LogoBgrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogoBgrLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Logo)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addGroup(LogoBgrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gambarLogo)
+                    .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         labelPengguna.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
@@ -527,9 +537,13 @@ public class MBankingGUI extends javax.swing.JFrame {
                     .addGroup(panelBerandaLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(btnMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45))
+                    .addGroup(panelBerandaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelBerandaLayout.createSequentialGroup()
                         .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelBerandaLayout.createSequentialGroup()
@@ -556,13 +570,10 @@ public class MBankingGUI extends javax.swing.JFrame {
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBerandaLayout.createSequentialGroup()
                                         .addGap(33, 33, 33)
-                                        .addComponent(btnEWallet, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(panelBerandaLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(labelPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(btnEWallet, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 31, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBerandaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 7, Short.MAX_VALUE)
                         .addComponent(bgrRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6))
         );
@@ -573,9 +584,9 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LogoBgr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(40, 40, 40)
                 .addComponent(labelPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1276,18 +1287,15 @@ public class MBankingGUI extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNoHPEWallet)
-                            .addComponent(txtNominalEWallet))))
+                    .addComponent(txtNoHPEWallet)
+                    .addComponent(txtNominalEWallet))
                 .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(84, 84, 84)
@@ -4261,7 +4269,6 @@ public class MBankingGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Logo;
     private javax.swing.JPanel LogoBgr;
     private javax.swing.JPanel PanelBPJS;
     private javax.swing.JPanel PanelDonasi;
@@ -4342,6 +4349,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPanel faruqiPanelBSI1;
     private javax.swing.JPanel faruqiPanelMandiri1;
     private javax.swing.JPanel faruqiPanelPermata1;
+    private javax.swing.JLabel gambarLogo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -4530,6 +4538,7 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelVoucherGame;
     private javax.swing.JLabel labelWeCareid;
     private javax.swing.JLabel labelXBOX;
+    private javax.swing.JLabel logo;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel namaPengguna1;
     private javax.swing.JLabel nomorHpPengguna1;

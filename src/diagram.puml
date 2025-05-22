@@ -31,8 +31,8 @@ class Pengguna {
     +getNamaLengkap(): String
 
     +static login(username: String, password: String): Pengguna
-    +static verifikasiDataAwal(...): String
-    +static buatAkun(...): boolean
+    + static String verifikasiDataAwal(nama: String, nik: String, noRek: String, pin: String, noHP: String, email: String): String
+    + static boolean buatAkun(username: String, password: String, npid: String): boolean
     +static getInfoRekening(pid: String): Pengguna
 }
 
@@ -69,11 +69,18 @@ class MBankingGUI {
 }
 
 ' === Relations ===
-Pengguna --> DatabaseConnection : uses
-Transfer --> DatabaseConnection : uses
-EWallet --> DatabaseConnection : uses
+' Pengguna memiliki satu koneksi (static) ke DB
+Pengguna "1" --> "1" DatabaseConnection : menggunakan
+' EWallet membutuhkan akses ke pengguna (One-to-One) dan DB (Shared)
+EWallet "1" --> "1" Pengguna : memiliki
+EWallet "*" --> "1" DatabaseConnection : menggunakan
 
-MBankingGUI --> Pengguna : uses
-MBankingGUI --> Transfer : uses
-MBankingGUI --> EWallet : uses
+' Transfer mengakses database
+Transfer "*" --> "1" DatabaseConnection : menggunakan
+
+' GUI menggunakan semua entitas
+MBankingGUI "1" --> "1" Pengguna : menggunakan
+MBankingGUI "1" --> "*" Transfer : menggunakan
+MBankingGUI "1" --> "1" EWallet : menggunakan
+MBankingGUI "1" --> "1" DatabaseConnection : menggunakan
 @enduml
