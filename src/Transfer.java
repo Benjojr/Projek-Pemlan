@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 public class Transfer {
     private String noRekTujuan;
     private String bankTujuan;
+    public String namaPenerima;
     private double nominal;
 
     public Transfer(String noRekTujuan, String bankTujuan, double nominal) {
@@ -23,7 +24,10 @@ public class Transfer {
         pst.setString(1, noRekTujuan);
         pst.setString(2, bankTujuan);
         ResultSet rs = pst.executeQuery();
-        return rs.next();
+        if(rs.next()){
+            this.namaPenerima = rs.getString("nama");
+            return true;
+        } else return false;
     }
 
     public boolean prosesTransfer(String pengirimNPID, String pinInput, String storedPIN) throws SQLException {
@@ -90,5 +94,17 @@ public class Transfer {
 
     public double getNominal() {
         return nominal;
+    }
+    
+    public String getNamaPenerima(){
+        return namaPenerima;
+    }
+    
+    public String getNoRekPenerima(){
+        return noRekTujuan;
+    }
+    
+    public String getBankPenerima(){
+        return bankTujuan;
     }
 }

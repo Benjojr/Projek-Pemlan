@@ -16,8 +16,7 @@ public class EWallet {
 
     public static boolean topUp(String NPID, String inputPIN, String inputNominal) {
         try {
-            // Bersihkan dan parse input nominal
-            double nominal = Double.parseDouble(inputNominal.replace(".", "").replace(",", ""));
+            double nominal = Double.parseDouble(inputNominal.replace(".", ""));
 
             Connection conn = DatabaseConnection.getConnection();
 
