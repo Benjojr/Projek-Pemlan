@@ -5513,6 +5513,9 @@
                     <Property name="text" type="java.lang.String" value="Rp 20.000"/>
                     <Property name="verticalAlignment" type="int" value="1"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn20rbVoucherActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelz2">
                   <Properties>
@@ -5538,6 +5541,9 @@
                     <Property name="text" type="java.lang.String" value="Rp 25.000"/>
                     <Property name="verticalAlignment" type="int" value="1"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn25rbVoucherActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel88">
                   <Properties>
