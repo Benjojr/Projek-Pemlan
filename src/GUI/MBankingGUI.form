@@ -431,7 +431,7 @@
             <Component class="javax.swing.JButton" name="btnRekening">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/account.png"/>
+                  <Image iconType="3" name="/Icon/account.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -488,7 +488,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bgrLogin" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnBack" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="bgrLogin" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="8" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -496,7 +499,9 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
                       <Component id="bgrLogin" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="207" max="32767" attributes="0"/>
                   </Group>
@@ -586,6 +591,16 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="btnBack">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icon/arrow.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelDaftar1">
@@ -1496,13 +1511,6 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="textFieldNomorRekening2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1515,13 +1523,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="textFieldNomorRekening2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1622,8 +1623,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="textFieldNomorRekening2">
-            </Component>
             <Component class="javax.swing.JButton" name="btnKembaliEWallet3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1651,7 +1650,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel7" max="32767" attributes="0"/>
@@ -1659,6 +1658,7 @@
                               <Component id="btnKembaliEWallet" min="-2" pref="45" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="panelPenerima3" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1669,9 +1669,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnKembaliEWallet" min="-2" pref="45" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="panelPenerima3" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="173" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1719,7 +1720,7 @@
                           <Component id="jLabel37" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtPINEWallet" min="-2" pref="36" max="-2" attributes="0"/>
-                          <EmptySpace pref="69" max="32767" attributes="0"/>
+                          <EmptySpace pref="24" max="32767" attributes="0"/>
                           <Component id="btnKirimEWallet" min="-2" pref="56" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
@@ -1754,6 +1755,157 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPINEWalletActionPerformed"/>
                   </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="panelPenerima3">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="jLabel109" min="-2" pref="271" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="34" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelNamaPenerimaTopUp" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labelPenerimaNamaTopUp" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="labelPenerimaNoRek3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labelNoHpPenerimaTopUp" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelPenerimaBankTujuan3" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelWalletTujuanPenerima" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelPenerimaNominal3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="labelNominalPenerimaTopUp" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel109" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="labelPenerimaNamaTopUp" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelNamaPenerimaTopUp" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="labelPenerimaNoRek3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelNoHpPenerimaTopUp" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="labelPenerimaBankTujuan3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelWalletTujuanPenerima" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="labelPenerimaNominal3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelNominalPenerimaTopUp" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="labelPenerimaNamaTopUp">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="12" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Nama"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelNamaPenerimaTopUp">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="18" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="-"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelPenerimaNoRek3">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="12" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Nomor HP"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelNoHpPenerimaTopUp">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="18" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="-"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelPenerimaNominal3">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="12" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Nominal"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelNominalPenerimaTopUp">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="18" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="-"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel109">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="14" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Informasi Penerima"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelPenerimaBankTujuan3">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="12" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Jenis EWallet"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="labelWalletTujuanPenerima">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Montserrat Medium" size="18" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="-"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -1963,19 +2115,15 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel8" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="56" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="jButton15" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1984,29 +2132,13 @@
                       <Component id="jButton15" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace pref="21" max="32767" attributes="0"/>
                       <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="533" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel8">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="521" max="32767" attributes="0"/>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-            </Container>
             <Component class="javax.swing.JLabel" name="jLabel43">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -2028,6 +2160,28 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton15ActionPerformed"/>
               </Events>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel17">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+                    <Property name="axis" type="int" value="1"/>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="contoh">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jLabel39"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[358, 50]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelTransfer">
