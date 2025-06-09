@@ -641,17 +641,10 @@
                                       <Component id="btnKembali" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="42" max="-2" attributes="0"/>
-                          <EmptySpace pref="159" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -665,13 +658,6 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnKonfirmasi" min="-2" pref="58" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="299" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="42" max="-2" attributes="0"/>
-                          <EmptySpace pref="299" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -851,11 +837,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKonfirmasiActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnKembali">
@@ -5769,7 +5750,7 @@
         <Container class="javax.swing.JPanel" name="panelInvoice">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card24"/>
+              <CardConstraints cardName="panelInvoice"/>
             </Constraint>
           </Constraints>
 
@@ -5796,7 +5777,7 @@
                                       <Component id="jLabel96" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel84" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel95" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelLawanTransaksi" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel97" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel99" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -5839,7 +5820,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel95" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelLawanTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="labelPenerimaTransaksi" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -5880,6 +5861,9 @@
                   <Image iconType="3" name="/Icon/arrow.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton16ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel39">
               <Properties>
@@ -5908,7 +5892,7 @@
                 <Property name="text" type="java.lang.String" value="Nominal"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel95">
+            <Component class="javax.swing.JLabel" name="labelLawanTransaksi">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Montserrat Medium" size="14" style="1"/>
@@ -5992,6 +5976,39 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="tipe"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="panelLoading">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="cardLoading"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel100" alignment="0" pref="360" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel100" alignment="0" pref="640" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel100">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icon/loading.gif"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
