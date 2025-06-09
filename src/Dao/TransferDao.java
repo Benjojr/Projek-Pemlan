@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 public class TransferDao {
@@ -108,7 +110,9 @@ public class TransferDao {
             transfer.getBankPenerima(),
             transfer.getNominal(),
             transfer.getPengirim().getNamaLengkap(),
-            transfer.getNamaPenerima()
+            transfer.getNamaPenerima(),
+            LocalDate.now(),
+            LocalTime.now()
         );
         RiwayatDao.simpanRiwayatTransfer(conn, riwayat);
     }

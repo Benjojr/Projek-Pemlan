@@ -29,8 +29,8 @@ public class RiwayatDao {
         pst.setString(2, riwayat.getNoRekPenerima());
         pst.setString(3, riwayat.getBankPengirim());
         pst.setString(4, riwayat.getBankPenerima());
-        pst.setObject(5, LocalDate.now());
-        pst.setObject(6, LocalTime.now());
+        pst.setObject(5, riwayat.getTanggal());
+        pst.setObject(6, riwayat.getWaktu());
         pst.setDouble(7, riwayat.getNominal());
         pst.executeUpdate();
     }
@@ -44,8 +44,8 @@ public class RiwayatDao {
         pst.setString(1, riwayat.getNoRekPengirim());
         pst.setString(2, noHpPenerima);
         pst.setString(3, jenisEWallet);
-        pst.setObject(4, LocalDate.now());
-        pst.setObject(5, LocalTime.now());
+        pst.setObject(4, riwayat.getTanggal());
+        pst.setObject(5, riwayat.getWaktu());
         pst.setDouble(6, riwayat.getNominal());
         pst.executeUpdate();
     }
@@ -74,7 +74,9 @@ public class RiwayatDao {
                 rs1.getString("bankPenerima"),
                 rs1.getDouble("nominal"),
                 rs1.getString("namaPengirim"),
-                rs1.getString("namaPenerima")
+                rs1.getString("namaPenerima"),
+                rs1.getDate("tanggal").toLocalDate(),
+                rs1.getTime("waktu").toLocalTime()
             ));
         }
 
@@ -98,7 +100,9 @@ public class RiwayatDao {
                 rs2.getString("jenisEWallet"),
                 rs2.getDouble("nominal"),
                 rs2.getString("namaPengirim"),
-                rs2.getString("namaPenerima")
+                rs2.getString("namaPenerima"),
+                rs2.getDate("tanggal").toLocalDate(),
+                rs2.getTime("waktu").toLocalTime()
             ));
         }
 

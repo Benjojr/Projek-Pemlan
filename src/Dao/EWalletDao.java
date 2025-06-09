@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 public class EWalletDao {
@@ -86,7 +88,9 @@ public class EWalletDao {
             wallet.getNamaWallet(),
             wallet.getNominal(),
             wallet.getPengirim().getNamaLengkap(),
-            wallet.getNamaPenerima()
+            wallet.getNamaPenerima(),
+            LocalDate.now(),
+            LocalTime.now()
         );
         RiwayatDao.simpanRiwayatTopUp(conn, riwayat, wallet.getNoHpTujuan(), wallet.getNamaWallet());
     }

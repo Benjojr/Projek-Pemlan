@@ -4,6 +4,9 @@
  */
 package Entity;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 /**
  *
  * @author benja
@@ -16,8 +19,8 @@ public class RiwayatTransfer extends Riwayat {
 
     public RiwayatTransfer(String noRekPengirim, String noRekPenerima,
                            String bankPengirim, String bankPenerima,
-                           double nominal, String namaPengirim, String namaPenerima) {
-        super(nominal, namaPengirim, namaPenerima);
+                           double nominal, String namaPengirim, String namaPenerima, LocalDate tanggal, LocalTime waktu) {
+        super(nominal, namaPengirim, namaPenerima, tanggal, waktu);
         this.noRekPengirim = noRekPengirim;
         this.noRekPenerima = noRekPenerima;
         this.bankPengirim = bankPengirim;

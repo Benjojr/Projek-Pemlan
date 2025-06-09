@@ -4,6 +4,9 @@
  */
 package Entity;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 /**
  *
  * @author benja
@@ -15,8 +18,8 @@ public class RiwayatTopUp extends Riwayat {
 
     public RiwayatTopUp(String noRekPengirim, String noHpPenerima,
                         String jenisEWallet, double nominal,
-                        String namaPengirim, String namaPenerima) {
-        super(nominal, namaPengirim, namaPenerima);
+                        String namaPengirim, String namaPenerima, LocalDate tanggal, LocalTime waktu) {
+        super(nominal, namaPengirim, namaPenerima, tanggal, waktu);
         this.noRekPengirim = noRekPengirim;
         this.noHpPenerima = noHpPenerima;
         this.jenisEWallet = jenisEWallet;
