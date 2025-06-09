@@ -7,18 +7,20 @@ public class Pengguna {
     private String namaLengkap;
     private String noRek;
     private double saldo;
+    private String bank;
     private String pin;
     private String email;
     private String noHP;
     private String username;
 
-    public Pengguna(String pid, String nbid, String namaLengkap, String noRek, double saldo, String pin,
+    public Pengguna(String pid, String nbid, String namaLengkap, String noRek, double saldo, String bank, String pin,
                     String email, String noHP, String username) {
         this.pid = pid;
         this.nbid = nbid;
         this.namaLengkap = namaLengkap;
         this.noRek = noRek;
         this.saldo = saldo;
+        this.bank = bank;
         this.pin = pin;
         this.email = email;
         this.noHP = noHP;
@@ -88,6 +90,10 @@ public class Pengguna {
 
     public void setNoHP(String noHP) {
         this.noHP = noHP;
+    }
+
+    public String getBank() {
+        return bank;
     }
 
     public String getUsername() {

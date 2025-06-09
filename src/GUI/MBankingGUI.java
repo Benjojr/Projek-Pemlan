@@ -174,12 +174,11 @@ public class MBankingGUI extends javax.swing.JFrame {
         PanelTVKabel = new javax.swing.JPanel();
         PanelPendidikan = new javax.swing.JPanel();
         PanelPDAM = new javax.swing.JPanel();
-        panelRiwayatTagihan = new javax.swing.JPanel();
+        panelRiwayat = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         jButton15 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel17 = new javax.swing.JPanel();
-        contoh = new javax.swing.JLabel();
         panelTransfer = new javax.swing.JPanel();
         faruqiPanelAlasBankTujuan1 = new javax.swing.JPanel();
         jLabel55 = new javax.swing.JLabel();
@@ -408,7 +407,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         gambarLogo.setBackground(new java.awt.Color(255, 255, 255));
         gambarLogo.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        gambarLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo MBankKu.png"))); // NOI18N
         gambarLogo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         gambarLogo.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
@@ -437,7 +435,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         );
 
         labelPengguna.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
-        labelPengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user.png"))); // NOI18N
         labelPengguna.setText("Anda belum masuk");
 
         btnMasuk.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
@@ -449,7 +446,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
 
         btnKeluar.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logout.png"))); // NOI18N
         btnKeluar.setText("Keluar");
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -465,14 +461,12 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
-        btnTagihan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dots.png"))); // NOI18N
         btnTagihan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTagihanActionPerformed(evt);
             }
         });
 
-        btnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file.png"))); // NOI18N
         btnRiwayat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRiwayatActionPerformed(evt);
@@ -543,14 +537,12 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
-        btnTransfer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/send.png"))); // NOI18N
         btnTransfer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTransferActionPerformed(evt);
             }
         });
 
-        btnEWallet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/top-up.png"))); // NOI18N
         btnEWallet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEWalletActionPerformed(evt);
@@ -862,14 +854,12 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        btnKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKembaliActionPerformed(evt);
@@ -1115,14 +1105,12 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel22.setText("INFORMASI AKUN");
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/profile.png"))); // NOI18N
         jLabel10.setMaximumSize(new java.awt.Dimension(50, 50));
 
         javax.swing.GroupLayout panelInfoRekeningLayout = new javax.swing.GroupLayout(panelInfoRekening);
@@ -1184,28 +1172,24 @@ public class MBankingGUI extends javax.swing.JFrame {
         labelShopeepay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelShopeepay.setText("SHOPEEPAY");
 
-        ewalletDana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo dana.png"))); // NOI18N
         ewalletDana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ewalletDanaActionPerformed(evt);
             }
         });
 
-        ewalletGopay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo gopay.png"))); // NOI18N
         ewalletGopay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ewalletGopayActionPerformed(evt);
             }
         });
 
-        ewalletShopeepay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo shopeepay.png"))); // NOI18N
         ewalletShopeepay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ewalletShopeepayActionPerformed(evt);
             }
         });
 
-        ewalletOvo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo ovo.png"))); // NOI18N
         ewalletOvo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ewalletOvoActionPerformed(evt);
@@ -1251,7 +1235,6 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton5ActionPerformed(evt);
@@ -1362,7 +1345,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        btnKembaliEWallet3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
+        btnKembaliEWallet3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/arrow.png"))); // NOI18N
         btnKembaliEWallet3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKembaliEWallet3ActionPerformed(evt);
@@ -1400,7 +1383,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         panelEWallet3.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnKembaliEWallet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnKembaliEWallet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKembaliEWalletActionPerformed(evt);
@@ -1412,7 +1394,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel37.setText("Masukkan PIN ATM");
 
         btnKirimEWallet.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
-        btnKirimEWallet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/send.png"))); // NOI18N
         btnKirimEWallet.setText("TOP UP");
         btnKirimEWallet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1575,7 +1556,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         PanelBPJS.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
@@ -1584,7 +1564,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthcare.png"))); // NOI18N
         jLabel44.setText(" BPJS");
 
         jLabel45.setText("Nomor BPJS");
@@ -1678,13 +1657,12 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         mainPanel.add(PanelPDAM, "cardPDAM");
 
-        panelRiwayatTagihan.setBackground(new java.awt.Color(255, 255, 255));
+        panelRiwayat.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel43.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         jLabel43.setText("RIWAYAT TAGIHAN");
 
         jButton15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -1692,29 +1670,24 @@ public class MBankingGUI extends javax.swing.JFrame {
         });
 
         jPanel17.setLayout(new javax.swing.BoxLayout(jPanel17, javax.swing.BoxLayout.Y_AXIS));
-
-        contoh.setText("jLabel39");
-        contoh.setMaximumSize(new java.awt.Dimension(358, 50));
-        jPanel17.add(contoh);
-
         jScrollPane2.setViewportView(jPanel17);
 
-        javax.swing.GroupLayout panelRiwayatTagihanLayout = new javax.swing.GroupLayout(panelRiwayatTagihan);
-        panelRiwayatTagihan.setLayout(panelRiwayatTagihanLayout);
-        panelRiwayatTagihanLayout.setHorizontalGroup(
-            panelRiwayatTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelRiwayatLayout = new javax.swing.GroupLayout(panelRiwayat);
+        panelRiwayat.setLayout(panelRiwayatLayout);
+        panelRiwayatLayout.setHorizontalGroup(
+            panelRiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRiwayatLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel43)
                 .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(panelRiwayatTagihanLayout.createSequentialGroup()
+            .addGroup(panelRiwayatLayout.createSequentialGroup()
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jScrollPane2)
         );
-        panelRiwayatTagihanLayout.setVerticalGroup(
-            panelRiwayatTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRiwayatTagihanLayout.createSequentialGroup()
+        panelRiwayatLayout.setVerticalGroup(
+            panelRiwayatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRiwayatLayout.createSequentialGroup()
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jLabel43)
@@ -1722,19 +1695,17 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        mainPanel.add(panelRiwayatTagihan, "cardRiwayat");
+        mainPanel.add(panelRiwayat, "cardRiwayat");
 
         faruqiPanelAlasBankTujuan1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel55.setFont(new java.awt.Font("Rockwell Condensed", 1, 24)); // NOI18N
-        jLabel55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank.png"))); // NOI18N
         jLabel55.setText("PILIH BANK TUJUAN");
         jLabel55.setIconTextGap(20);
 
         faruqiPanelBRI1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
         btnBRI2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBRI2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo_BRI15.png"))); // NOI18N
         btnBRI2.setText("Bank Rakyat indonesia (BRI)");
         btnBRI2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBRI2.setIconTextGap(10);
@@ -1764,7 +1735,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         faruqiPanelMandiri1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
         btnMandiri1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnMandiri1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank_mandiri20.png"))); // NOI18N
         btnMandiri1.setText("Bank Mandiri");
         btnMandiri1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMandiri1.setIconTextGap(10);
@@ -1794,7 +1764,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         faruqiPanelBCA1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
         btnBCA1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBCA1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_BCA20.jpg"))); // NOI18N
         btnBCA1.setText("Bank Central Asia (BCA)");
         btnBCA1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBCA1.setIconTextGap(10);
@@ -1824,7 +1793,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         faruqiPanelBNI1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
         btnBNI1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBNI1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bank_BNI20.png"))); // NOI18N
         btnBNI1.setText("Bank Negara Indonesia (BNI)");
         btnBNI1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBNI1.setIconTextGap(10);
@@ -1854,7 +1822,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         faruqiPanelBSI1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
         btnBSI1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnBSI1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_BSI20.png"))); // NOI18N
         btnBSI1.setText("Bank Syariah Indonesia (BSI)");
         btnBSI1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBSI1.setIconTextGap(10);
@@ -1884,7 +1851,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         faruqiPanelPermata1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
         btnPermata1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnPermata1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_bankPermata20.png"))); // NOI18N
         btnPermata1.setText("Bank Permata");
         btnPermata1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPermata1.setIconTextGap(10);
@@ -1911,7 +1877,6 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnBankTujuanKeluar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnBankTujuanKeluar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBankTujuanKeluar1ActionPerformed(evt);
@@ -2008,7 +1973,6 @@ public class MBankingGUI extends javax.swing.JFrame {
             }
         });
 
-        btnTransfer2Keluar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnTransfer2Keluar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTransfer2Keluar2ActionPerformed(evt);
@@ -2093,7 +2057,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel53.setText("Masukan PIN ATM");
 
         btnTransfer2.setFont(new java.awt.Font("Montserrat Medium", 1, 14)); // NOI18N
-        btnTransfer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/send.png"))); // NOI18N
         btnTransfer2.setText("TRANSFER");
         btnTransfer2.setIconTextGap(15);
         btnTransfer2.addActionListener(new java.awt.event.ActionListener() {
@@ -2132,7 +2095,6 @@ public class MBankingGUI extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        btnTransfer2Keluar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnTransfer2Keluar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTransfer2Keluar3ActionPerformed(evt);
@@ -2269,7 +2231,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         PanelDonasi.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -2300,35 +2261,30 @@ public class MBankingGUI extends javax.swing.JFrame {
         labelRumahYatim.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelRumahYatim.setText("Rumah Yatim");
 
-        donasiWeCareid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wecare.png"))); // NOI18N
         donasiWeCareid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 donasiWeCareidActionPerformed(evt);
             }
         });
 
-        donasiKitabisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/large-DhlpI3LfAlBrdmfGC0mMxF9e-h4axLdF.png"))); // NOI18N
         donasiKitabisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 donasiKitabisaActionPerformed(evt);
             }
         });
 
-        donasiRUmahYatim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/42cab11e-a883-44c1-91a2-4581df98093d.jpg"))); // NOI18N
         donasiRUmahYatim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 donasiRUmahYatimActionPerformed(evt);
             }
         });
 
-        donasiDOmpetDhuafa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo-dompet-dhuafa-brand-image-trademark-png-favpng-cGyqCaDLzm6SCs47kv3MNhjfm.jpg"))); // NOI18N
         donasiDOmpetDhuafa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 donasiDOmpetDhuafaActionPerformed(evt);
             }
         });
 
-        donasiRumahZakat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoRZ.png"))); // NOI18N
         donasiRumahZakat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 donasiRumahZakatActionPerformed(evt);
@@ -2409,7 +2365,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         PanelVoucherGame.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnBackVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnBackVoucher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackVoucherActionPerformed(evt);
@@ -2418,7 +2373,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         labelVoucherGame.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelVoucherGame.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelVoucherGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game-controller.png"))); // NOI18N
         labelVoucherGame.setText("VOUCHER GAME");
 
         labelSteam.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
@@ -2441,35 +2395,30 @@ public class MBankingGUI extends javax.swing.JFrame {
         labelNintendo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelNintendo.setText("Nintendo");
 
-        voucherGameSteambtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SteamLogo.png"))); // NOI18N
         voucherGameSteambtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voucherGameSteambtnActionPerformed(evt);
             }
         });
 
-        voucherGameXBOXbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/XBOXLogo.jpg"))); // NOI18N
         voucherGameXBOXbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voucherGameXBOXbtnActionPerformed(evt);
             }
         });
 
-        voucherGameNintendobtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NintendoLogo.png"))); // NOI18N
         voucherGameNintendobtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voucherGameNintendobtnActionPerformed(evt);
             }
         });
 
-        voucherGameGooglePlaybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PlayStoreLogo.png"))); // NOI18N
         voucherGameGooglePlaybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voucherGameGooglePlaybtnActionPerformed(evt);
             }
         });
 
-        voucherGameEpicGamesbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Epic-Games-Logo.png"))); // NOI18N
         voucherGameEpicGamesbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voucherGameEpicGamesbtnActionPerformed(evt);
@@ -2556,7 +2505,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         PanelPLN.setMinimumSize(new java.awt.Dimension(360, 640));
         PanelPLN.setPreferredSize(new java.awt.Dimension(360, 640));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -2895,7 +2843,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         PanelPulsa.setMinimumSize(new java.awt.Dimension(360, 640));
         PanelPulsa.setPreferredSize(new java.awt.Dimension(360, 640));
 
-        btnBackPulsa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnBackPulsa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackPulsaActionPerformed(evt);
@@ -2904,7 +2851,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         labelPulsa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelPulsa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelPulsa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/upload.png"))); // NOI18N
         labelPulsa.setText("Pulsa");
 
         jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -3251,7 +3197,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         PanelPaketData1.setMinimumSize(new java.awt.Dimension(360, 640));
         PanelPaketData1.setPreferredSize(new java.awt.Dimension(360, 640));
 
-        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton29ActionPerformed(evt);
@@ -3404,21 +3349,18 @@ public class MBankingGUI extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(348, 483));
 
-        btnTagihanJaringan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wifi (1).png"))); // NOI18N
         btnTagihanJaringan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTagihanJaringanActionPerformed(evt);
             }
         });
 
-        btnTagihanPaketData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/upload.png"))); // NOI18N
         btnTagihanPaketData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTagihanPaketDataActionPerformed(evt);
             }
         });
 
-        btnTagihanPLN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flash (1).png"))); // NOI18N
         btnTagihanPLN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTagihanPLNActionPerformed(evt);
@@ -3441,14 +3383,12 @@ public class MBankingGUI extends javax.swing.JFrame {
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("Token Listrik");
 
-        btnTagihanVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/game-controller.png"))); // NOI18N
         btnTagihanVoucher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTagihanVoucherActionPerformed(evt);
             }
         });
 
-        btnTagihanDonasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/donation.png"))); // NOI18N
         btnTagihanDonasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTagihanDonasiActionPerformed(evt);
@@ -3518,7 +3458,6 @@ public class MBankingGUI extends javax.swing.JFrame {
                     .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
@@ -3557,7 +3496,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         mainPanel.add(panelTagihan, "cardTagihan");
 
-        jButton36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         jButton36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton36ActionPerformed(evt);
@@ -3591,7 +3529,6 @@ public class MBankingGUI extends javax.swing.JFrame {
         PanelPembayaranVoucher.setBackground(new java.awt.Color(255, 255, 255));
         PanelPembayaranVoucher.setMinimumSize(new java.awt.Dimension(360, 640));
 
-        btnBackPembayaranVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
         btnBackPembayaranVoucher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackPembayaranVoucherActionPerformed(evt);
@@ -3600,7 +3537,6 @@ public class MBankingGUI extends javax.swing.JFrame {
 
         labelPembayaranVoucher.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelPembayaranVoucher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelPembayaranVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/console.png"))); // NOI18N
         labelPembayaranVoucher.setText("Voucher Game");
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -4102,11 +4038,11 @@ public class MBankingGUI extends javax.swing.JFrame {
 
                 if (berhasil) {
                     updateSaldo();
-                    tampilkanPesan("Transfer Berhasil!");
-
+                    tampilkanPesan("Top Up Berhasil!");
+                    textFieldPIN1.setText("");
                     kembaliKeBeranda();
                 } else {
-                    tampilkanPesan("Transfer Gagal!");
+                    tampilkanPesan("Top Up Gagal!");
                     textFieldPIN1.setText("");
                 }
             } catch (SQLException e) {
@@ -4471,7 +4407,7 @@ public class MBankingGUI extends javax.swing.JFrame {
                 if (berhasil) {
                     updateSaldo();
                     tampilkanPesan("Transfer Berhasil!");
-
+                    textFieldPIN1.setText("");
                     kembaliKeBeranda();
                 } else {
                     tampilkanPesan("Transfer Gagal!");
@@ -4770,7 +4706,6 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnTransfer2;
     private javax.swing.JButton btnTransfer2Keluar2;
     private javax.swing.JButton btnTransfer2Keluar3;
-    private javax.swing.JLabel contoh;
     private javax.swing.JToggleButton donasiDOmpetDhuafa;
     private javax.swing.JToggleButton donasiKitabisa;
     private javax.swing.JToggleButton donasiRUmahYatim;
@@ -4823,8 +4758,6 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
-    private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -4945,8 +4878,6 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField kolomBuatKonfirmasiSandi;
     private javax.swing.JTextField kolomBuatNamaPengguna;
     private javax.swing.JLabel labelBankTujuanPenerima;
-    private javax.swing.JLabel labelBankTujuanPenerima1;
-    private javax.swing.JLabel labelBankTujuanPenerima2;
     private javax.swing.JLabel labelDana;
     private javax.swing.JLabel labelDompetDhuafa;
     private javax.swing.JLabel labelEpicGames;
@@ -4968,37 +4899,23 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelJudulSaldo;
     private javax.swing.JLabel labelKitabisa;
     private javax.swing.JLabel labelNamaPenerima;
-    private javax.swing.JLabel labelNamaPenerima1;
-    private javax.swing.JLabel labelNamaPenerima2;
     private javax.swing.JLabel labelNamaPenerimaTopUp;
     private javax.swing.JLabel labelNintendo;
     private javax.swing.JLabel labelNoHpPenerimaTopUp;
     private javax.swing.JLabel labelNoRek;
     private javax.swing.JLabel labelNoRekPenerima;
-    private javax.swing.JLabel labelNoRekPenerima1;
-    private javax.swing.JLabel labelNoRekPenerima2;
     private javax.swing.JLabel labelNominalPenerima;
-    private javax.swing.JLabel labelNominalPenerima1;
-    private javax.swing.JLabel labelNominalPenerima2;
     private javax.swing.JLabel labelNominalPenerimaTopUp;
     private javax.swing.JLabel labelOvo;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelPembayaranVoucher;
     private javax.swing.JLabel labelPenerimaBankTujuan;
-    private javax.swing.JLabel labelPenerimaBankTujuan1;
-    private javax.swing.JLabel labelPenerimaBankTujuan2;
     private javax.swing.JLabel labelPenerimaBankTujuan3;
     private javax.swing.JLabel labelPenerimaNama;
-    private javax.swing.JLabel labelPenerimaNama1;
-    private javax.swing.JLabel labelPenerimaNama2;
     private javax.swing.JLabel labelPenerimaNamaTopUp;
     private javax.swing.JLabel labelPenerimaNoRek;
-    private javax.swing.JLabel labelPenerimaNoRek1;
-    private javax.swing.JLabel labelPenerimaNoRek2;
     private javax.swing.JLabel labelPenerimaNoRek3;
     private javax.swing.JLabel labelPenerimaNominal;
-    private javax.swing.JLabel labelPenerimaNominal1;
-    private javax.swing.JLabel labelPenerimaNominal2;
     private javax.swing.JLabel labelPenerimaNominal3;
     private javax.swing.JLabel labelPengguna;
     private javax.swing.JLabel labelPesanKesalahan;
@@ -5031,10 +4948,8 @@ public class MBankingGUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelInfoRekening;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPanel panelPenerima;
-    private javax.swing.JPanel panelPenerima1;
-    private javax.swing.JPanel panelPenerima2;
     private javax.swing.JPanel panelPenerima3;
-    private javax.swing.JPanel panelRiwayatTagihan;
+    private javax.swing.JPanel panelRiwayat;
     private javax.swing.JPanel panelTagihan;
     private javax.swing.JPanel panelTransfer;
     private javax.swing.JPanel panelTransfer2;

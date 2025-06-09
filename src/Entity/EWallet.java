@@ -20,7 +20,6 @@ public class EWallet {
         this.pengirim = pengirim;
         this.namaWallet = namaWallet;
         this.noHpTujuan = noHpTujuan;
-        this.namaPenerima = namaPenerima;
         this.nominal = Double.parseDouble(inputNominal.replace(".", ""));
     }
 

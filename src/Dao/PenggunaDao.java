@@ -34,6 +34,7 @@ public class PenggunaDao {
                 rs.getString("nama"),
                 rs.getString("noRek"),
                 rs.getDouble("saldo"),
+                rs.getString("Bank"),
                 rs.getString("PIN"),
                 rs.getString("email"),
                 rs.getString("noHP"),
