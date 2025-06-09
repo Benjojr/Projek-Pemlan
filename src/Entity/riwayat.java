@@ -1,59 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Entity;
 
-/**
- *
- * @author benja
- */
-public class Riwayat {
-    private String noRekPengirim;
-    private String noRekPenerima;
-    private String bankPenerima;
-    private String bankPengirim;
-    private String noHpPenerima;
-    private String jenisEWallet;
+public abstract class Riwayat {
+    protected double nominal;
+    protected String namaPengirim;
+    protected String namaPenerima;
 
-    public Riwayat(String noRekPengirim, String noRekPenerima, String bankPenerima, String bankPengirim) {
-        this.noRekPengirim = noRekPengirim;
-        this.noRekPenerima = noRekPenerima;
-        this.bankPenerima = bankPenerima;
-        this.bankPengirim = bankPengirim;
-        this.noHpPenerima = null;
-        this.jenisEWallet = null;
+    public Riwayat(double nominal, String namaPengirim, String namaPenerima) {
+        this.nominal = nominal;
+        this.namaPengirim = namaPengirim;
+        this.namaPenerima = namaPenerima;
     }
 
-    public Riwayat(String noRekPengirim, String noHpPenerima, String jenisEWallet) {
-        this.noRekPengirim = noRekPengirim;
-        this.noHpPenerima = noHpPenerima;
-        this.jenisEWallet = jenisEWallet;
-        this.noRekPenerima = null;
-        this.bankPenerima = null;
-        this.bankPengirim = null;
+    public abstract String getJenis(); // Transfer / TopUp
+
+    public abstract String getDetailTujuan(); // noRekPenerima atau noHpPenerima
+
+    public double getNominal() {
+        return nominal;
     }
 
-    public String getNoRekPengirim() {
-        return noRekPengirim;
+    public String getNamaPengirim() {
+        return namaPengirim;
     }
 
-    public String getNoRekPenerima() {
-        return noRekPenerima;
-    }
-    public String getNoHpPenerima() {
-        return noHpPenerima;
-    }
-
-    public String getJenisEWallet() {
-        return jenisEWallet;
-    }
-
-    public String getBankPenerima() {
-        return bankPenerima;
-    }
-
-    public String getBankPengirim() {
-        return bankPengirim;
+    public String getNamaPenerima() {
+        return namaPenerima;
     }
 }

@@ -9,7 +9,7 @@ package Dao;
  * @author benja
  */
 import Database.DatabaseConnection;
-import Entity.Riwayat;
+import Entity.RiwayatTransfer;
 import Entity.Transfer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -101,11 +101,14 @@ public class TransferDao {
     
 
      private static void simpanKeRiwayat(Connection conn, Transfer transfer) throws SQLException {
-        Riwayat riwayat = new Riwayat(
+        RiwayatTransfer riwayat = new RiwayatTransfer(
             transfer.getPengirim().getNoRek(),
             transfer.getNoRekPenerima(),
+            transfer.getPengirim().getBank(),
             transfer.getBankPenerima(),
-            transfer.getPengirim().getBank()
+            transfer.getNominal(),
+            transfer.getPengirim().getNamaLengkap(),
+            transfer.getNamaPenerima()
         );
         RiwayatDao.simpanRiwayatTransfer(conn, riwayat);
     }

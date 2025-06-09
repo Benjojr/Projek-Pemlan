@@ -10,7 +10,7 @@ package Dao;
  */
 import Database.DatabaseConnection;
 import Entity.EWallet;
-import Entity.Riwayat;
+import Entity.RiwayatTopUp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,10 +80,13 @@ public class EWalletDao {
 
     // Simpan riwayat top up
     private static void simpanKeRiwayat(Connection conn, EWallet wallet) throws SQLException {
-        Riwayat riwayat = new Riwayat(
+        RiwayatTopUp riwayat = new RiwayatTopUp(
             wallet.getPengirim().getNoRek(),
             wallet.getNoHpTujuan(),
-            wallet.getNamaWallet()
+            wallet.getNamaWallet(),
+            wallet.getNominal(),
+            wallet.getPengirim().getNamaLengkap(),
+            wallet.getNamaPenerima()
         );
         RiwayatDao.simpanRiwayatTopUp(conn, riwayat, wallet.getNoHpTujuan(), wallet.getNamaWallet());
     }
