@@ -8,14 +8,14 @@ package Dao;
  *
  * @author benja
  */
-import Entity.EWallet;
 import Database.DatabaseConnection;
-
-import javax.swing.JOptionPane;
+import Entity.EWallet;
+import Entity.Riwayat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class EWalletDao {
 
@@ -52,7 +52,6 @@ public class EWalletDao {
         return true; // Semua valid
     }
 
-    // Proses top up (hanya update saldo)
     public static boolean prosesTopUp(EWallet wallet) throws SQLException {
         Connection conn = DatabaseConnection.getConnection();
         try {
@@ -68,11 +67,9 @@ public class EWalletDao {
             if (updated > 0) {
                 simpanKeRiwayat(conn, wallet);
                 conn.commit();
-                JOptionPane.showMessageDialog(null, "Top Up Berhasil!");
                 return true;
             } else {
                 conn.rollback();
-                JOptionPane.showMessageDialog(null, "Top Up gagal.");
                 return false;
             }
         } catch (SQLException e) {
@@ -83,14 +80,11 @@ public class EWalletDao {
 
     // Simpan riwayat top up
     private static void simpanKeRiwayat(Connection conn, EWallet wallet) throws SQLException {
-        String query = """
-                INSERT INTO RiwayatTopUp(noRekPengirim, noHpPenerima, jenisEWallet, tanggal, waktu)
-                VALUES (?, ?, ?, GETDATE(), SYSDATETIME())
-                """;
-        PreparedStatement pst = conn.prepareStatement(query);
-        pst.setString(1, wallet.getPengirim().getNoRek());
-        pst.setString(2, wallet.getNoHpTujuan());
-        pst.setString(3, wallet.getNamaWallet());
-        pst.executeUpdate();
+        Riwayat riwayat = new Riwayat(
+            wallet.getPengirim().getNoRek(),
+            wallet.getNoHpTujuan(),
+            wallet.getNamaWallet()
+        );
+        RiwayatDao.simpanRiwayatTopUp(conn, riwayat, wallet.getNoHpTujuan(), wallet.getNamaWallet());
     }
 }

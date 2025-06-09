@@ -9,15 +9,12 @@ package Dao;
  * @author benja
  */
 import Database.DatabaseConnection;
+import Entity.Riwayat;
 import Entity.Transfer;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 public class TransferDao {
@@ -88,7 +85,7 @@ public class TransferDao {
             int updated2 = pst2.executeUpdate();
 
             if (updated1 > 0 && updated2 > 0) {
-                simpanKeRiwayat(transfer);
+                simpanKeRiwayat(conn, transfer);
                 conn.commit();
                 return true;
             } else {
@@ -103,17 +100,13 @@ public class TransferDao {
 
     
 
-    private static void simpanKeRiwayat(Transfer transfer) throws SQLException {
-        String query = """
-                INSERT INTO RiwayatTransfer(noRekPengirim, noRekPenerima, tanggal, waktu)
-                VALUES (?, ?, ?, ?)
-                """;
-        Connection conn = DatabaseConnection.getConnection();
-        PreparedStatement pst = conn.prepareStatement(query);
-        pst.setString(1, transfer.getPengirim().getNoRek());
-        pst.setString(2, transfer.getNoRekPenerima());
-        pst.setDate(3, Date.valueOf(LocalDate.now()));
-        pst.setTime(4, Time.valueOf(LocalTime.now()));
-        pst.executeUpdate();
+     private static void simpanKeRiwayat(Connection conn, Transfer transfer) throws SQLException {
+        Riwayat riwayat = new Riwayat(
+            transfer.getPengirim().getNoRek(),
+            transfer.getNoRekPenerima(),
+            transfer.getBankPenerima(),
+            transfer.getPengirim().getBank()
+        );
+        RiwayatDao.simpanRiwayatTransfer(conn, riwayat);
     }
 }
