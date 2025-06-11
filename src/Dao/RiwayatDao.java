@@ -4,16 +4,14 @@
  */
 package Dao;
 
+import Database.DatabaseConnection;
 import Entity.Riwayat;
 import Entity.RiwayatTopUp;
 import Entity.RiwayatTransfer;
-import Database.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,10 +103,6 @@ public class RiwayatDao {
                 rs2.getTime("waktu").toLocalTime()
             ));
         }
-
-        // Optional: urutkan berdasarkan tanggal dan waktu jika ingin
-        // (tambahkan field tanggal/waktu di Riwayat jika ingin sorting)
-
         return list;
     }
 }
