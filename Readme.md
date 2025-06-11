@@ -26,4 +26,4 @@ Pastikan Anda memiliki software berikut:
 Jika Anda ingin melihat langsung isi database di SSMS, silakan login dengan kredensial berikut:
 
 - **Username:** `user_pemlan`
-- **Password:** `MBankKuDeveloper`
+- **Password:** `MBankKuDeveloper_123`
