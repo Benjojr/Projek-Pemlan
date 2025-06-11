@@ -1,6 +1,6 @@
 # Aplikasi MBanking GUI
 
-## Kebutuhan Sistem
+## Requirement
 
 Pastikan Anda memiliki software berikut:
 
