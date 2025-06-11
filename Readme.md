@@ -9,16 +9,19 @@ Pastikan Anda memiliki software berikut:
 
 ## Langkah-langkah Menjalankan Aplikasi
 
-1. **Buka dan jalankan `script.sql` di SSMS**
+1. **Clone repository ini**
+   - Jalankan perintah `git clone https://github.com/Benjojr/Projek-Pemlan.git` di CMD atau terminal lain
+     
+2. **Buka dan jalankan `script.sql` di SSMS**
    - Jalankan perintah SQL yang ada dalam file `script.sql` untuk membuat dan mengisi database.
 
-2. **Buka project Java di NetBeans**
+3. **Buka project Java di NetBeans**
    - Pilih menu `File` > `Open Project`, lalu arahkan ke folder project ini.
 
-3. **Klik kanan pada project dan pilih `Clean and Build`**
+4. **Klik kanan pada project dan pilih `Clean and Build`**
    - Ini akan membangun ulang project dan memastikan tidak ada error.
 
-4. **Jalankan aplikasi**
+5. **Jalankan aplikasi**
    - Tekan `Fn+F6`.
 
 ## Informasi Login Database
