@@ -13,8 +13,14 @@ public class Transfer {
         this.bankTujuan = bankTujuan;
         this.nominal = nominal;
     }
+    public String getNoRekTujuan() {
+        return noRekTujuan;
+    }
+    
+    public String getBankTujuan() {
+        return bankTujuan;
+    }
 
-    // Getters
     public double getNominal() {
         return nominal;
     }
@@ -35,7 +41,6 @@ public class Transfer {
         return pengirim;
     }
 
-    // Setter for namaPenerima (needed by DAO)
     public void setNamaPenerima(String namaPenerima) {
         this.namaPenerima = namaPenerima;
     }
