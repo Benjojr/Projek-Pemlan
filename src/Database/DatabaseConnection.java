@@ -5,17 +5,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
+
     public static Connection getConnection() throws SQLException {
         Connection connection = null;
         if (connection == null || connection.isClosed()) {
-            String url = "jdbc:sqlserver://benxyz.database.windows.net:1433;"
-                    + "database=ProjectPemlan;"
-                    + "user=hihanghoheng@benxyz;"
-                    + "password=Mucacos_26;"
-                    + "encrypt=true;"
-                    + "trustServerCertificate=false;"
-                    + "hostNameInCertificate=*.database.windows.net;"
-                    + "loginTimeout=30;";
+            String url =  "jdbc:sqlserver://localhost\\SQLSERVER:1433;"
+                    +"databaseName=ProjectPemlan;"
+                    +"user=user_pemlan;"
+                    +"password=MBankKuDeveloper_123;"
+                    +"encrypt=true;"
+                    +"trustServerCertificate=true;";
             try {
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 connection = DriverManager.getConnection(url);

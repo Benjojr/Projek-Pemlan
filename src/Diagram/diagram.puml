@@ -3,84 +3,169 @@ skinparam linetype ortho
 
 ' === DatabaseConnection ===
 class DatabaseConnection {
-    +static getConnection(): Connection
+    +{static} getConnection(): Connection
 }
 
 ' === Pengguna ===
 class Pengguna {
-    -pid: String
-    -npid: String
-    -namaLengkap: String
-    -noRek: String
-    -saldo: double
-    -pin: String
-    -email: String
-    -noHP: String
-    -username: String
+    - pid: String
+    - nbid: String
+    - namaLengkap: String
+    - noRek: String
+    - saldo: double
+    - bank: String
+    - pin: String
+    - email: String
+    - noHP: String
+    - username: String
 
-    +Pengguna()
-    +getNamaPertama(): String
-    +getNoRek(): String
-    +getSaldo(): double
-    +getPID(): String
-    +getNPID(): String
-    +getPIN(): String
-    +getEmail(): String
-    +getNoHP(): String
-    +getUsername(): String
-    +getNamaLengkap(): String
-
-    +static login(username: String, password: String): Pengguna
-    +static String verifikasiDataAwal(nama: String, nik: String, noRek: String, pin: String, noHP: String, email: String): String
-    +static boolean buatAkun(username: String, password: String, npid: String): boolean
-    +static getInfoRekening(pid: String): Pengguna
+    + Pengguna(pid: String, nbid: String, namaLengkap: String, noRek: String, saldo: double, bank: String, pin: String, email: String, noHP: String, username: String)
+    + getPID(): String
+    + setPID(pid: String): void
+    + getNBID(): String
+    + setNBID(nbid: String): void
+    + getNamaLengkap(): String
+    + setNamaLengkap(namaLengkap: String): void
+    + getNoRek(): String
+    + setNoRek(noRek: String): void
+    + getSaldo(): double
+    + setSaldo(saldo: double): void
+    + getPIN(): String
+    + setPIN(pin: String): void
+    + getEmail(): String
+    + setEmail(email: String): void
+    + getNoHP(): String
+    + setNoHP(noHP: String): void
+    + getBank(): String
+    + getUsername(): String
+    + setUsername(username: String): void
+    + getNamaPertama(): String
 }
 
 ' === Transfer ===
 class Transfer {
-    -noRekTujuan: String
-    -bankTujuan: String
-    -nominal: double
+    - noRekTujuan: String
+    - bankTujuan: String
+    - namaPenerima: String
+    - pengirim: Pengguna
+    - nominal: double
 
-    +Transfer(noRekTujuan: String, bankTujuan: String, nominal: double)
-    +rekeningTujuanValid(): boolean
-    +prosesTransfer(pengirimNPID: String, pinInput: String, storedPIN: String): boolean
-    +getNominal(): double
-    +static getSaldoBaru(npid: String): double
+    + Transfer(pengirim: Pengguna, noRekPenerima: String, bankPenerima: String, nominal: double)
+    + getNoRekPenerima(): String
+    + getBankPenerima(): String
+    + getNominal(): double
+    + getNamaPenerima(): String
+    + getPengirim(): Pengguna
+    + setNamaPenerima(namaPenerima: String): void
 }
 
 ' === EWallet ===
 class EWallet {
-    +static topUp(NPID: String, inputPIN: String, inputNominal: String): boolean
+    - pengirim: Pengguna
+    - nominal: double
+    - noHpTujuan: String
+    - namaWallet: String
+    - namaPenerima: String
+
+    + EWallet(pengirim: Pengguna, namaWallet: String, noHpTujuan: String, inputNominal: String)
+    + getPengirim(): Pengguna
+    + getNoHpTujuan(): String
+    + getNamaWallet(): String
+    + getNamaPenerima(): String
+    + setNamaPenerima(namaPenerima: String): void
+    + getNominal(): double
 }
 
-' === MBankingGUI (logic-only) ===
-class MBankingGUI {
-    -isLoggedIn: boolean
-    -NPID: String
-    -PID: String
-    -TPIN: String
-    -transfer: Transfer
+' === Riwayat ===
+abstract class Riwayat {
+    # nominal: double
+    # namaPengirim: String
+    # namaPenerima: String
+    # tanggal: LocalDate
+    # waktu: LocalTime
 
-    +MBankingGUI()
-    +btnSubmitLoginActionPerformed()
-    +btnTransfer2ActionPerformed()
-    +updateSaldo()
+    + Riwayat(nominal: double, namaPengirim: String, namaPenerima: String, tanggal: LocalDate, waktu: LocalTime)
+    + getNominal(): double
+    + getNamaPengirim(): String
+    + getNamaPenerima(): String
+    + getTanggal(): LocalDate
+    + getWaktu(): LocalTime
+    + getJenis(): String
+    + getDetailTujuan(): String
+}
+
+' === Riwayat Transfer ===
+class RiwayatTransfer extends Riwayat {
+    - noRekPengirim: String
+    - noRekPenerima: String
+    - bankPengirim: String
+    - bankPenerima: String
+
+    + RiwayatTransfer(noRekPengirim: String, noRekPenerima: String, bankPengirim: String, bankPenerima: String, nominal: double, namaPengirim: String, namaPenerima: String, tanggal: LocalDate, waktu: LocalTime)
+    + getJenis(): String
+    + getDetailTujuan(): String
+    + getNoRekPengirim(): String
+    + getNoRekPenerima(): String
+    + getBankPengirim(): String
+    + getBankPenerima(): String
+}
+
+' === Riwayat Top Up===
+class RiwayatTopUp extends Riwayat {
+    - noRekPengirim: String
+    - noHpPenerima: String
+    - jenisEWallet: String
+
+    + RiwayatTopUp(noRekPengirim: String, noHpPenerima: String, jenisEWallet: String, nominal: double, namaPengirim: String, namaPenerima: String, tanggal: LocalDate, waktu: LocalTime)
+    + getJenis(): String
+    + getDetailTujuan(): String
+    + getNoRekPengirim(): String
+    + getJenisEWallet(): String
+}
+
+' === Dao Classes ====
+class RiwayatDao {
+    +{static} simpanRiwayatTransfer(conn: Connection, riwayat: RiwayatTransfer): void
+    +{static} simpanRiwayatTopUp(conn: Connection, riwayat: RiwayatTopUp, noHpPenerima: String, jenisEWallet: String): void
+    +{static} getSemuaRiwayatByNoRek(noRek: String): List<Riwayat>
+}
+
+class PenggunaDao {
+    +{static} login(username: String, password: String): Pengguna
+    +{static} verifikasiDataAwal(nama: String, nik: String, noRek: String, pin: String, noHP: String, email: String): String
+    +{static} buatAkun(username: String, password: String, npid: String): boolean
+    +{static} getSaldoBaru(pengguna: Pengguna): double
+}
+
+class TransferDao {
+    +{static} validasiTransfer(transfer: Transfer): boolean
+    +{static} prosesTransfer(transfer: Transfer, pengirimNBID: String, pinInput: String, PIN: String): boolean
+    +{static} simpanKeRiwayatTransfer(conn: Connection, transfer: Transfer): void
+}
+
+class EWalletDao {
+    +{static} validasiTopUp(wallet: EWallet): boolean
+    +{static} prosesTopUp(wallet: EWallet): boolean
+    +{static} simpanKeRiwayatTopUp(conn: Connection, wallet: EWallet): void
 }
 
 ' === Relations ===
-' Pengguna memiliki satu koneksi (static) ke DB
-Pengguna "1" --> "1" DatabaseConnection : menggunakan
-' EWallet membutuhkan akses ke pengguna (One-to-One) dan DB (Shared)
-EWallet "1" --> "1" Pengguna : memiliki
-EWallet "*" --> "1" DatabaseConnection : menggunakan
-
-' Transfer mengakses database
-Transfer "*" --> "1" DatabaseConnection : menggunakan
-
-' GUI menggunakan semua entitas
-MBankingGUI "1" --> "1" Pengguna : menggunakan
-MBankingGUI "1" --> "*" Transfer : menggunakan
-MBankingGUI "1" --> "1" EWallet : menggunakan
-MBankingGUI "1" --> "1" DatabaseConnection : menggunakan
+Transfer "1" <-- "1" Pengguna : menggunakan
+EWallet "1" <-- "1" Pengguna : menggunakan
+Riwayat <|-- RiwayatTransfer : mewarisi
+Riwayat <|-- RiwayatTopUp : mewarisi
+DatabaseConnection <.. RiwayatDao : menggunakan
+RiwayatDao ..> RiwayatTransfer : menyimpan
+RiwayatDao ..> RiwayatTopUp : menyimpan
+RiwayatDao ..> Riwayat : mengembalikan
+DatabaseConnection <.. PenggunaDao : menggunakan
+PenggunaDao ..> Pengguna : menggunakan/menghasilkan
+DatabaseConnection <.. TransferDao : menggunakan
+TransferDao ..> Transfer : menggunakan
+TransferDao ..> RiwayatDao : memanggil
+TransferDao ..> RiwayatTransfer : membuat
+DatabaseConnection <.. EWalletDao : menggunakan
+EWalletDao ..> EWallet : menggunakan
+EWalletDao ..> RiwayatTopUp : membuat
+EWalletDao ..> RiwayatDao : memanggil
 @enduml
