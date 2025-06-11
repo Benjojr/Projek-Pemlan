@@ -1,4 +1,4 @@
-# Aplikasi ProjectPemlan
+# Aplikasi MBanking GUI
 
 ## Kebutuhan Sistem
 
